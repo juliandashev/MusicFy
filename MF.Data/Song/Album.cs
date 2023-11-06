@@ -13,6 +13,9 @@ namespace MF.Data.Song
         public int Id { get; set; }
 
         public int AuthorId { get; set; }
+        public virtual Author Author { get; set; }
+
+        public int SongId { get; set; }
 
         [Display(Name = "Albums name")]
         [Required]
@@ -21,5 +24,9 @@ namespace MF.Data.Song
        
         [Display(Name = "Songs that are in the album")]
         public virtual ICollection<Song> Songs { get; set; }
+
+        [Display(Name = "Is album public boolean")]
+        [Required]
+        public bool isPublic { get; set; }
     }
 }

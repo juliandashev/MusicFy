@@ -13,6 +13,8 @@ namespace MF.Data.Song
         [Key]
         public int Id { get; set; }
 
+        public int AlbumId { get; set; }
+
         [Display(Name = "Author's first name")]
         [StringLength(20, MinimumLength = 3)]
         public string? FName { get; set; }
@@ -27,7 +29,10 @@ namespace MF.Data.Song
         public string Username { get; set; }
 
         [Display(Name = "Author's albums released")]
-        public ICollection<Album> Albums { get; set; }
+        public virtual ICollection<Album> Albums { get; set; }
+
+        [Display(Name = "Author's songs released")]
+        public virtual ICollection<Song> Songs { get; set; }
 
         [Display(Name = "Author's followers")]
         public int Followers { get; set; }

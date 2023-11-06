@@ -17,9 +17,13 @@ namespace MF.Data.Song
         [StringLength(50, MinimumLength = 3)]
         public string Name { get; set; }
 
-        [Display(Name = "Album description")]
+        [Display(Name = "Playlist description")]
         [StringLength(150, MinimumLength = 3)]
         public string? Description { get; set; }
+
+        // Can be nullable, becase a playlist can be empty
+        [Display(Name = "Playlist's songs")]
+        public virtual ICollection<Song>? Songs { get; set; }
 
         [Display(Name = "Playlist status")]
         [Required]

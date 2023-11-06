@@ -12,13 +12,17 @@ namespace MF.Data.Song
         [StringLength(20, MinimumLength = 3)]
         public string Name { get; set; }
 
-        [Display(Name = "Author/s")]
+        public int AlbumId { get; set; }
+        
+        [Display(Name = "Author")]
         [Required]
-        public virtual ICollection<Author> Authors { get; set; }
+        public virtual Author Author { get; set; }
 
+        public int AuthorId { get; set; }
+        
         [Display(Name = "Album name")]
         [Required]
-        public Album Album { get; set; }
+        public virtual Album Album { get; set; }
 
         [Display(Name = "Song duration in seconds")]
         [Required]

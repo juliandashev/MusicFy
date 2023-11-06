@@ -1,0 +1,11 @@
+C:\Users\Intel\source\repos\MusicFy\MF.Data\bin\Debug\net7.0\MF.Data.deps.json
+C:\Users\Intel\source\repos\MusicFy\MF.Data\bin\Debug\net7.0\MF.Data.dll
+C:\Users\Intel\source\repos\MusicFy\MF.Data\bin\Debug\net7.0\MF.Data.pdb
+C:\Users\Intel\source\repos\MusicFy\MF.Data\obj\Debug\net7.0\MF.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Intel\source\repos\MusicFy\MF.Data\obj\Debug\net7.0\MF.Data.AssemblyInfoInputs.cache
+C:\Users\Intel\source\repos\MusicFy\MF.Data\obj\Debug\net7.0\MF.Data.AssemblyInfo.cs
+C:\Users\Intel\source\repos\MusicFy\MF.Data\obj\Debug\net7.0\MF.Data.csproj.CoreCompileInputs.cache
+C:\Users\Intel\source\repos\MusicFy\MF.Data\obj\Debug\net7.0\MF.Data.dll
+C:\Users\Intel\source\repos\MusicFy\MF.Data\obj\Debug\net7.0\refint\MF.Data.dll
+C:\Users\Intel\source\repos\MusicFy\MF.Data\obj\Debug\net7.0\MF.Data.pdb
+C:\Users\Intel\source\repos\MusicFy\MF.Data\obj\Debug\net7.0\ref\MF.Data.dll
