@@ -13,8 +13,6 @@ namespace MF.Data.Song
         [Key]
         public int Id { get; set; }
 
-        public int AlbumId { get; set; }
-
         [Display(Name = "Author's first name")]
         [StringLength(20, MinimumLength = 3)]
         public string? FName { get; set; }

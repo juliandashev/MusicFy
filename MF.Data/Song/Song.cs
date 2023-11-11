@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MF.Data.Song
 {
@@ -12,20 +13,13 @@ namespace MF.Data.Song
         [StringLength(20, MinimumLength = 3)]
         public string Name { get; set; }
 
-        public int AlbumId { get; set; }
-        
-        [Display(Name = "Author")]
-        [Required]
-        public virtual Author Author { get; set; }
-
         public int AuthorId { get; set; }
+        public virtual Author Author { get; set; }
         
-        [Display(Name = "Album name")]
-        [Required]
+        public int AlbumId { get; set; }
         public virtual Album Album { get; set; }
 
         [Display(Name = "Song duration in seconds")]
-        [Required]
         [StringLength(20, MinimumLength = 1)]
         public string Duration { get; set; }
 

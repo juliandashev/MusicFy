@@ -1,25 +1,30 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MusicFy.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MF.Data.Song;
+using MusicFy.Data;
 
 namespace MusicFy.Controllers
 {
-    public class AlbumController : Controller
+    public class AlbumsController : Controller
     {
         private readonly MusicFyDbContext _context;
 
-        public AlbumController(MusicFyDbContext context)
+        public AlbumsController(MusicFyDbContext context)
         {
             _context = context;
         }
 
+        // GET: Albums
         public async Task<IActionResult> Index()
         {
-
-            return View(await _context.Albums.ToListAsync());
+            var musicFyDbContext = _context.Albums.Include(a => a.Author);
+            return View(await musicFyDbContext.ToListAsync());
         }
-
 
         // GET: Albums/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -29,19 +34,21 @@ namespace MusicFy.Controllers
                 return NotFound();
             }
 
-            var Album = await _context.Albums
+            var album = await _context.Albums
+                .Include(a => a.Author)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (Album == null)
+            if (album == null)
             {
                 return NotFound();
             }
 
-            return View(Album);
+            return View(album);
         }
 
         // GET: Albums/Create
         public IActionResult Create()
         {
+            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username");
             return View();
         }
 
@@ -50,15 +57,16 @@ namespace MusicFy.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Value")] Album Album)
+        public async Task<IActionResult> Create([Bind("Id,AuthorId,Name,isPublic")] Album album)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(Album);
+                _context.Add(album);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(Album);
+            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", album.AuthorId);
+            return View(album);
         }
 
         // GET: Albums/Edit/5
@@ -69,12 +77,13 @@ namespace MusicFy.Controllers
                 return NotFound();
             }
 
-            var genre = await _context.Albums.FindAsync(id);
-            if (genre == null)
+            var album = await _context.Albums.FindAsync(id);
+            if (album == null)
             {
                 return NotFound();
             }
-            return View(genre);
+            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", album.AuthorId);
+            return View(album);
         }
 
         // POST: Albums/Edit/5
@@ -82,9 +91,9 @@ namespace MusicFy.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Value")] Album Album)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,AuthorId,Name,isPublic")] Album album)
         {
-            if (id != Album.Id)
+            if (id != album.Id)
             {
                 return NotFound();
             }
@@ -93,12 +102,12 @@ namespace MusicFy.Controllers
             {
                 try
                 {
-                    _context.Update(Album);
+                    _context.Update(album);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AlbumExists(Album.Id))
+                    if (!AlbumExists(album.Id))
                     {
                         return NotFound();
                     }
@@ -109,7 +118,8 @@ namespace MusicFy.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(Album);
+            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", album.AuthorId);
+            return View(album);
         }
 
         // GET: Albums/Delete/5
@@ -120,14 +130,15 @@ namespace MusicFy.Controllers
                 return NotFound();
             }
 
-            var genre = await _context.Albums
+            var album = await _context.Albums
+                .Include(a => a.Author)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (genre == null)
+            if (album == null)
             {
                 return NotFound();
             }
 
-            return View(genre);
+            return View(album);
         }
 
         // POST: Albums/Delete/5
@@ -137,12 +148,12 @@ namespace MusicFy.Controllers
         {
             if (_context.Albums == null)
             {
-                return Problem("Entity set 'MovieCatalogDbContext.Albums'  is null.");
+                return Problem("Entity set 'MusicFyDbContext.Albums'  is null.");
             }
-            var genre = await _context.Albums.FindAsync(id);
-            if (genre != null)
+            var album = await _context.Albums.FindAsync(id);
+            if (album != null)
             {
-                _context.Albums.Remove(genre);
+                _context.Albums.Remove(album);
             }
 
             await _context.SaveChangesAsync();
@@ -151,7 +162,7 @@ namespace MusicFy.Controllers
 
         private bool AlbumExists(int id)
         {
-            return _context.Albums.Any(e => e.Id == id);
+            return (_context.Albums?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
