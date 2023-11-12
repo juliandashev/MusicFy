@@ -99,7 +99,7 @@ namespace MusicFy.Migrations
                         column: x => x.AuthorId,
                         principalTable: "Authors",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Songs_Playlists_PlaylistId",
                         column: x => x.PlaylistId,

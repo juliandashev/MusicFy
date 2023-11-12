@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MusicFy.Data;
 
@@ -11,9 +12,11 @@ using MusicFy.Data;
 namespace MusicFy.Migrations
 {
     [DbContext(typeof(MusicFyDbContext))]
-    partial class MusicFyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231112113514_3")]
+    partial class _3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,31 +83,6 @@ namespace MusicFy.Migrations
                     b.ToTable("Authors");
                 });
 
-            modelBuilder.Entity("MF.Data.Song.Image", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ContentType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("Data")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Images");
-                });
-
             modelBuilder.Entity("MF.Data.Song.Playlist", b =>
                 {
                     b.Property<int>("Id")
@@ -154,11 +132,9 @@ namespace MusicFy.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<int>("ImageId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Image_id")
-                        .HasColumnType("int");
+                    b.Property<byte[]>("Image")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<int>("Listeners")
                         .HasColumnType("int");
@@ -176,8 +152,6 @@ namespace MusicFy.Migrations
                     b.HasIndex("AlbumId");
 
                     b.HasIndex("AuthorId");
-
-                    b.HasIndex("ImageId");
 
                     b.HasIndex("PlaylistId");
 
@@ -220,12 +194,6 @@ namespace MusicFy.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MF.Data.Song.Image", "Image")
-                        .WithMany()
-                        .HasForeignKey("ImageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MF.Data.Song.Playlist", null)
                         .WithMany("Songs")
                         .HasForeignKey("PlaylistId");
@@ -233,8 +201,6 @@ namespace MusicFy.Migrations
                     b.Navigation("Album");
 
                     b.Navigation("Author");
-
-                    b.Navigation("Image");
                 });
 
             modelBuilder.Entity("MF.Data.Song.Album", b =>

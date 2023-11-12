@@ -32,14 +32,40 @@ namespace MF.Data.Song
         [Display(Name = "Author's songs released")]
         public virtual ICollection<Song> Songs { get; set; }
 
+        private int followers { get; set; }
         [Display(Name = "Author's followers")]
-        public int Followers { get; set; }
+        public int Followers
+        {
+            get { return followers; }
+            set
+            {
+                if (value < 0)
+                    value = 0;
+
+                followers = value;
+            }
+        }
+
+        private int monthlyListeners { get; set; }
 
         [Display(Name = "Author's total monthly listeners")]
-        public int MonthlyListeners { get; set;}
+        public int MonthlyListeners
+        {
+            get { return monthlyListeners; }
+            set
+            {
+                if (value < 0)
+                    value = 0;
+
+                monthlyListeners = value;
+            }
+        }
 
         [Display(Name = "Date when account was created")]
         [DataType(dataType: DataType.Date)]
-        private DateTime DateCreated { get; set; }
+        public static DateTime DateCreated
+        {
+            get { return DateTime.UtcNow; }
+        }
     }
 }

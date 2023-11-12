@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MusicFy.Data;
 
@@ -11,9 +12,11 @@ using MusicFy.Data;
 namespace MusicFy.Migrations
 {
     [DbContext(typeof(MusicFyDbContext))]
-    partial class MusicFyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231112165324_FileSystem")]
+    partial class FileSystem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

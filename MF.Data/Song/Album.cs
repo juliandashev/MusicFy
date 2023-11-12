@@ -15,17 +15,17 @@ namespace MF.Data.Song
 
         [ForeignKey("AuthorId")]
         public int AuthorId { get; set; }
-        public virtual Author Author { get; set; }
+        public Author Author { get; set; }
 
-        [Display(Name = "Albums name")]
+        [Display(Name = "Album name")]
         [Required]
         [StringLength(50, MinimumLength = 3)]
         public string Name { get; set; }
        
-        [Display(Name = "Songs that are in the album")]
+        [Display(Name = "Album songs")]
         public virtual ICollection<Song> Songs { get; set; }
 
-        [Display(Name = "Is album public boolean")]
+        [Display(Name = "Album status")]
         [Required]
         public bool isPublic { get; set; }
     }

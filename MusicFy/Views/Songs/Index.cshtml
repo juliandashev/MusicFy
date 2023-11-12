@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MF.Data.Song.Author>
+﻿@model IEnumerable<MF.Data.Song.Song>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,19 +13,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FName)
+                @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LName)
+                @Html.DisplayNameFor(model => model.Author)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Username)
+                @Html.DisplayNameFor(model => model.Album)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Followers)
+                @Html.DisplayNameFor(model => model.Duration)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MonthlyListeners)
+                @Html.DisplayNameFor(model => model.Listeners)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
             </th>
             <th></th>
         </tr>
@@ -34,19 +37,22 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FName)
+                @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LName)
+                @Html.DisplayFor(modelItem => item.Author.Username)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Username)
+                @Html.DisplayFor(modelItem => item.Album.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Followers)
+                @Html.DisplayFor(modelItem => item.Duration)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MonthlyListeners)
+                @Html.DisplayFor(modelItem => item.Listeners)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
