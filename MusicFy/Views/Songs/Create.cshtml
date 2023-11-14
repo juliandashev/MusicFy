@@ -19,11 +19,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="AuthorId" class="control-label"></label>
-                <select asp-for="AuthorId" class ="form-control" asp-items="ViewBag.AuthorId"></select>
+                <select asp-for="AuthorId" class="form-control" asp-items="ViewBag.AuthorId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="AlbumId" class="control-label"></label>
-                <select asp-for="AlbumId" class ="form-control" asp-items="ViewBag.AlbumId"></select>
+                <select asp-for="AlbumId" class="form-control" asp-items="ViewBag.AlbumId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Duration" class="control-label"></label>
@@ -37,12 +37,27 @@
             </div>
             <div class="form-group">
                 <form asp-action="UploadFile" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="postedFile">Image:</label>
-                        <input type="file" name="postedFile" class="form-control" />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form id="uploadForm" asp-action="UploadFile" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <input type="file" name="postedFile" id="fileInput" class="form-control" />
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <button type="button" id="createButton" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
                     </div>
-
-                    <button type="submit" class="btn btn-primary">Upload</button>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <img id="preview" class="img-thumbnail square-image" />
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="form-group">
@@ -57,5 +72,13 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/js/site.js"></script>
 }

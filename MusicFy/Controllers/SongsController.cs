@@ -66,10 +66,6 @@ namespace MusicFy.Controllers
             {
                 postedFile.CopyTo(ms);
 
-                // Този ред може да се премахне, тъй като вече използвате MusicFyDbContext вместо IConfiguration
-                // string constr = this.Configuration.GetConnectionString("MyConn");
-
-                // Пример за вмъкване на данни чрез EF Core и MusicFyDbContext
                 var file = new Image
                 {
                     Name = fileName,
