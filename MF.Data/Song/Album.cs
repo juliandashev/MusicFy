@@ -13,19 +13,23 @@ namespace MF.Data.Song
         [Key]
         public int Id { get; set; }
 
-        [ForeignKey("AuthorId")]
-        public int AuthorId { get; set; }
-        public Author Author { get; set; }
+        public int? AuthorId { get; set; }
 
-        [Display(Name = "Album name")]
+        [Display(Name = "Author")]
+        [ForeignKey("AuthorId")]
+        [InverseProperty("Albums")]
+        public Author? Author { get; set; }
+
+        [Display(Name = "Album")]
         [Required]
         [StringLength(50, MinimumLength = 3)]
         public string Name { get; set; }
-       
-        [Display(Name = "Album songs")]
-        public virtual ICollection<Song> Songs { get; set; }
 
-        [Display(Name = "Album status")]
+        [Display(Name = "Album Songs")]
+        [InverseProperty("Album")]
+        public virtual ICollection<Song>? Songs { get; set; }
+
+        [Display(Name = "Make Public")]
         [Required]
         public bool isPublic { get; set; }
     }

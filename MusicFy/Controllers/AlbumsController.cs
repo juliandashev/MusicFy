@@ -59,6 +59,11 @@ namespace MusicFy.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,AuthorId,Name,isPublic")] Album album)
         {
+            if (album.Author == null && album.AuthorId == null)
+            {
+                ModelState.AddModelError("Author", "Choose an author for the album.");
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(album);

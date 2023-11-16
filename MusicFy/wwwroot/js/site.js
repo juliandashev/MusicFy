@@ -2,17 +2,16 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-$("#fileInput").change(function () {
-    readURL(this);
-});
+function previewImage() {
+    var input = document.getElementById('fileInput');
+    var preview = document.getElementById('preview');
 
-function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('#preview').attr('src', e.target.result);
-        };
+            preview.src = e.target.result;
+        }
 
         reader.readAsDataURL(input.files[0]);
     }

@@ -56,7 +56,7 @@ namespace MusicFy.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FName,LName,Username,Followers,MonthlyListeners")] Author author)
+        public async Task<IActionResult> Create([Bind("Id,FName,LName,Username")] Author author)
         {
             if (ModelState.IsValid)
             {

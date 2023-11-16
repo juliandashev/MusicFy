@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "mqw92Su+frWPRXnQVfBe+fKJVH1rABXIA/WP0eDtllhBmSfy58CvmwAEox2KinAP6EOCYCJTT6IhHYpEf/gMHw==",
+  "dgSpecHash": "UxFSRqxMft4Fo9s+/sAKLnAjAKH+gM6TKRZYeyE1x615Wmu/fVgFxsliHIGeYHuDG4LFIi+yt9vGxBQDblqFug==",
   "success": true,
   "projectFilePath": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MF.Data\\MF.Data.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Intel\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "C:\\Users\\Intel\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\Intel\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

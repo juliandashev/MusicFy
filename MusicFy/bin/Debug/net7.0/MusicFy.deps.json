@@ -625,6 +625,12 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Http.Features/5.0.17": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "7.0.0",
+          "System.IO.Pipelines": "6.0.3"
+        }
+      },
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore/7.0.13": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Relational": "7.0.13",
@@ -2601,6 +2607,9 @@
         }
       },
       "MF.Data/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "5.0.17"
+        },
         "runtime": {
           "MF.Data.dll": {}
         }
@@ -2997,6 +3006,13 @@
       "sha512": "sha512-rWIUQrvE8UT2dQkSTb7cpCWAwokg+HaqoydnKAW2ndL9cPDNffhahjhI5969ZC3hX3Ek0cHkwyMREqQHLJj6Zg==",
       "path": "microsoft.aspnetcore.diagnostics.entityframeworkcore/7.0.13",
       "hashPath": "microsoft.aspnetcore.diagnostics.entityframeworkcore.7.0.13.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Http.Features/5.0.17": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3jG2xS+dx8DDCGV/F+STdPTg89lX3ao3dF/VEPvJaz3wzBIjuadipTtYNEXDIVuOPZwb6jdmhrX9jkzOIBm5cw==",
+      "path": "microsoft.aspnetcore.http.features/5.0.17",
+      "hashPath": "microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore/7.0.13": {
       "type": "package",

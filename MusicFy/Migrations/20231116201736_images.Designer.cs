@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MusicFy.Data;
 
@@ -11,9 +12,11 @@ using MusicFy.Data;
 namespace MusicFy.Migrations
 {
     [DbContext(typeof(MusicFyDbContext))]
-    partial class MusicFyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231116201736_images")]
+    partial class images
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,7 +163,11 @@ namespace MusicFy.Migrations
                     b.Property<int>("Duration")
                         .HasColumnType("int");
 
+                    b.Property<int?>("FileId")
+                        .HasColumnType("int");
+
                     b.Property<byte[]>("Image")
+                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<long>("Listeners")
@@ -179,6 +186,8 @@ namespace MusicFy.Migrations
                     b.HasIndex("AlbumId");
 
                     b.HasIndex("AuthorId");
+
+                    b.HasIndex("FileId");
 
                     b.HasIndex("PlaylistId");
 
@@ -219,6 +228,10 @@ namespace MusicFy.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
+                    b.HasOne("MF.Data.Song.File", "File")
+                        .WithMany()
+                        .HasForeignKey("FileId");
+
                     b.HasOne("MF.Data.Song.Playlist", null)
                         .WithMany("Songs")
                         .HasForeignKey("PlaylistId");
@@ -226,6 +239,8 @@ namespace MusicFy.Migrations
                     b.Navigation("Album");
 
                     b.Navigation("Author");
+
+                    b.Navigation("File");
                 });
 
             modelBuilder.Entity("MF.Data.Song.Album", b =>

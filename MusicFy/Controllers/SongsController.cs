@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MF.Data.Song;
 using MusicFy.Data;
-using Microsoft.Data.SqlClient;
+using File = MF.Data.Song.File;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Hosting;
 
 namespace MusicFy.Controllers
 {
@@ -23,7 +26,8 @@ namespace MusicFy.Controllers
         // GET: Songs
         public async Task<IActionResult> Index()
         {
-            var musicFyDbContext = _context.Songs.Include(s => s.Album).Include(s => s.Author);
+            var musicFyDbContext = _context.Songs.Include(s => s.Album).Include(s => s.Author).Include(s => s.FileId);
+
             return View(await musicFyDbContext.ToListAsync());
         }
 
@@ -52,44 +56,50 @@ namespace MusicFy.Controllers
         {
             ViewData["AlbumId"] = new SelectList(_context.Albums, "Id", "Name");
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username");
-
+            ViewData["FileId"] = new SelectList(_context.Files, "Id", "ContentType");
             return View();
         }
-
-        [HttpPost]
-        public IActionResult UploadFile(IFormFile postedFile)
-        {
-            string fileName = Path.GetFileName(postedFile.FileName);
-            string contentType = postedFile.ContentType;
-
-            using (MemoryStream ms = new MemoryStream())
-            {
-                postedFile.CopyTo(ms);
-
-                var file = new Image
-                {
-                    Name = fileName,
-                    ContentType = contentType,
-                    Data = ms.ToArray()
-                };
-
-                _context.Images.Add(file);
-                _context.SaveChanges();
-            }
-
-            return RedirectToAction("Index");
-        }
-
 
         // POST: Songs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,AuthorId,AlbumId,Duration,Listeners,Image")] Song song)
+        public async Task<IActionResult> Create([Bind("Id,Name,AuthorId,AlbumId,FileId")] Song song)
         {
-            if (ModelState.IsValid)
+            bool isNull =
+                song.Album == null && song.AlbumId == null &&
+                song.Author == null && song.AuthorId == null;
+
+            if (isNull)
             {
+                ModelState.AddModelError("Author", "Choose an author for the album.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+
+                await Console.Out.WriteLineAsync("------------------------------------");
+                foreach (var error in errors)
+                {
+                    Console.WriteLine($"Error: {error.ErrorMessage}");
+                }
+                await Console.Out.WriteLineAsync("------------------------------------");
+
+                string wwwRootPath = _context.WebRoothPath;
+                string fileName = Path.GetFileNameWithoutExtension(_context.Files.FileName);
+                string extension = Path.GetExtension(_context.ImageFile.FileName);
+               
+                imageModel.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                
+                string path = Path.Combine(wwwRootPath + "/Image/", fileName);
+                
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await imageModel.ImageFile.CopyToAsync(fileStream);
+                }
+
                 _context.Add(song);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -97,6 +107,8 @@ namespace MusicFy.Controllers
 
             ViewData["AlbumId"] = new SelectList(_context.Albums, "Id", "Name", song.AlbumId);
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", song.AuthorId);
+            ViewData["FileId"] = new SelectList(_context.Files, "Id", "ContentType", song.FileId);
+
             return View(song);
         }
 
@@ -115,6 +127,8 @@ namespace MusicFy.Controllers
             }
             ViewData["AlbumId"] = new SelectList(_context.Albums, "Id", "Name", song.AlbumId);
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", song.AuthorId);
+            ViewData["FileId"] = new SelectList(_context.Files, "Id", "ContentType", song.FileId);
+
             return View(song);
         }
 
@@ -123,7 +137,7 @@ namespace MusicFy.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,AuthorId,AlbumId,Duration,Listeners,Image")] Song song)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,AuthorId,AlbumId,Duration,Listeners,DateCreated")] Song song)
         {
             if (id != song.Id)
             {
@@ -152,6 +166,8 @@ namespace MusicFy.Controllers
             }
             ViewData["AlbumId"] = new SelectList(_context.Albums, "Id", "Name", song.AlbumId);
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", song.AuthorId);
+            ViewData["FileId"] = new SelectList(_context.Files, "Id", "ContentType", song.FileId);
+
             return View(song);
         }
 

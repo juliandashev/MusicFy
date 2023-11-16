@@ -12,7 +12,7 @@ using MusicFy.Data;
 namespace MusicFy.Migrations
 {
     [DbContext(typeof(MusicFyDbContext))]
-    [Migration("20231111174338_2")]
+    [Migration("20231116175124_2")]
     partial class _2
     {
         /// <inheritdoc />
@@ -33,7 +33,7 @@ namespace MusicFy.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AuthorId")
+                    b.Property<int?>("AuthorId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -59,6 +59,9 @@ namespace MusicFy.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("FName")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
@@ -81,6 +84,31 @@ namespace MusicFy.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Authors");
+                });
+
+            modelBuilder.Entity("MF.Data.Song.File", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ContentType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("Data")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Files");
                 });
 
             modelBuilder.Entity("MF.Data.Song.Playlist", b =>
@@ -127,16 +155,17 @@ namespace MusicFy.Migrations
                     b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DateAdded")
+                    b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Duration")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<int>("Listeners")
+                    b.Property<int>("Duration")
                         .HasColumnType("int");
+
+                    b.Property<int>("FileId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("Listeners")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -152,6 +181,8 @@ namespace MusicFy.Migrations
 
                     b.HasIndex("AuthorId");
 
+                    b.HasIndex("FileId");
+
                     b.HasIndex("PlaylistId");
 
                     b.ToTable("Songs");
@@ -161,9 +192,7 @@ namespace MusicFy.Migrations
                 {
                     b.HasOne("MF.Data.Song.Author", "Author")
                         .WithMany("Albums")
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AuthorId");
 
                     b.Navigation("Author");
                 });
@@ -190,6 +219,12 @@ namespace MusicFy.Migrations
                     b.HasOne("MF.Data.Song.Author", "Author")
                         .WithMany("Songs")
                         .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("MF.Data.Song.File", "Image")
+                        .WithMany()
+                        .HasForeignKey("FileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -200,6 +235,8 @@ namespace MusicFy.Migrations
                     b.Navigation("Album");
 
                     b.Navigation("Author");
+
+                    b.Navigation("Image");
                 });
 
             modelBuilder.Entity("MF.Data.Song.Album", b =>

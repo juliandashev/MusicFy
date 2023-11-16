@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MusicFy.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialSnapshot : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,11 +21,27 @@ namespace MusicFy.Migrations
                     LName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     Username = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Followers = table.Column<int>(type: "int", nullable: false),
-                    MonthlyListeners = table.Column<int>(type: "int", nullable: false)
+                    MonthlyListeners = table.Column<int>(type: "int", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Authors", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Files",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ContentType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Data = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Files", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -80,9 +96,10 @@ namespace MusicFy.Migrations
                     Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     AuthorId = table.Column<int>(type: "int", nullable: false),
                     AlbumId = table.Column<int>(type: "int", nullable: false),
-                    Duration = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Listeners = table.Column<int>(type: "int", nullable: false),
-                    DateAdded = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Duration = table.Column<int>(type: "int", nullable: false),
+                    Listeners = table.Column<long>(type: "bigint", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FileId = table.Column<int>(type: "int", nullable: false),
                     PlaylistId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -98,6 +115,11 @@ namespace MusicFy.Migrations
                         name: "FK_Songs_Authors_AuthorId",
                         column: x => x.AuthorId,
                         principalTable: "Authors",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Songs_Files_FileId",
+                        column: x => x.FileId,
+                        principalTable: "Files",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -128,6 +150,11 @@ namespace MusicFy.Migrations
                 column: "AuthorId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Songs_FileId",
+                table: "Songs",
+                column: "FileId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Songs_PlaylistId",
                 table: "Songs",
                 column: "PlaylistId");
@@ -141,6 +168,9 @@ namespace MusicFy.Migrations
 
             migrationBuilder.DropTable(
                 name: "Albums");
+
+            migrationBuilder.DropTable(
+                name: "Files");
 
             migrationBuilder.DropTable(
                 name: "Playlists");
