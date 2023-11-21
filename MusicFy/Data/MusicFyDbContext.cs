@@ -9,8 +9,6 @@ namespace MusicFy.Data
         public DbSet<Playlist> Playlists { get; set; }
         public DbSet<Album> Albums { get; set; }
         public DbSet<Song> Songs{ get; set; }
-
-        public DbSet<MF.Data.Song.File> Files { get; set; }
         
         public MusicFyDbContext(DbContextOptions<MusicFyDbContext> options) : base(options)
         {

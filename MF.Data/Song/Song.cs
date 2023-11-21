@@ -38,11 +38,10 @@ namespace MF.Data.Song
         [DataType(dataType: DataType.Date)]
         public DateTime DateCreated { get; private set; } = DateTime.UtcNow;
 
-        public int? FileId { get; set; }
+        public string? ImageFileName { get; set; }
 
         [Display(Name = "Upload song banner")]
-        [ForeignKey("FileId")]
-        public virtual File? File { get; set; }
-        public byte[]? Image { get; set; }
+        [NotMapped]
+        public IFormFile? ImageFile { get; set; }
     }
 }

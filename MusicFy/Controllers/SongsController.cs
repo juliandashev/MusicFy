@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MF.Data.Song;
 using MusicFy.Data;
-using File = MF.Data.Song.File;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Hosting;
 
@@ -26,7 +25,7 @@ namespace MusicFy.Controllers
         // GET: Songs
         public async Task<IActionResult> Index()
         {
-            var musicFyDbContext = _context.Songs.Include(s => s.Album).Include(s => s.Author).Include(s => s.FileId);
+            var musicFyDbContext = _context.Songs.Include(s => s.Album).Include(s => s.Author);
 
             return View(await musicFyDbContext.ToListAsync());
         }
@@ -56,7 +55,6 @@ namespace MusicFy.Controllers
         {
             ViewData["AlbumId"] = new SelectList(_context.Albums, "Id", "Name");
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username");
-            ViewData["FileId"] = new SelectList(_context.Files, "Id", "ContentType");
             return View();
         }
 
@@ -65,7 +63,7 @@ namespace MusicFy.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,AuthorId,AlbumId,FileId")] Song song)
+        public async Task<IActionResult> Create([Bind("Id,Name,AuthorId,AlbumId,ImageFile")] Song song)
         {
             bool isNull =
                 song.Album == null && song.AlbumId == null &&
@@ -76,28 +74,25 @@ namespace MusicFy.Controllers
                 ModelState.AddModelError("Author", "Choose an author for the album.");
             }
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                var errors = ModelState.Values.SelectMany(v => v.Errors);
-
-                await Console.Out.WriteLineAsync("------------------------------------");
-                foreach (var error in errors)
+                if (song.ImageFile != null)
                 {
-                    Console.WriteLine($"Error: {error.ErrorMessage}");
-                }
-                await Console.Out.WriteLineAsync("------------------------------------");
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await song.ImageFile.CopyToAsync(memoryStream);
+                        string uniqueFileName = 
+                            $"{song.AlbumId}_{song.AuthorId}_{DateTime.Now:yyyyMMddHHmmss}_{Guid.NewGuid()}{Path.GetExtension(song.ImageFile.FileName)}";
 
-                string wwwRootPath = _context.WebRoothPath;
-                string fileName = Path.GetFileNameWithoutExtension(_context.Files.FileName);
-                string extension = Path.GetExtension(_context.ImageFile.FileName);
-               
-                imageModel.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                
-                string path = Path.Combine(wwwRootPath + "/Image/", fileName);
-                
-                using (var fileStream = new FileStream(path, FileMode.Create))
-                {
-                    await imageModel.ImageFile.CopyToAsync(fileStream);
+                        string filePath = Path.Combine(Environment.CurrentDirectory, "Uploads", "Banners", uniqueFileName);
+
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await memoryStream.CopyToAsync(fileStream);
+                        }
+
+                        song.ImageFileName = uniqueFileName;
+                    }
                 }
 
                 _context.Add(song);
@@ -107,7 +102,6 @@ namespace MusicFy.Controllers
 
             ViewData["AlbumId"] = new SelectList(_context.Albums, "Id", "Name", song.AlbumId);
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", song.AuthorId);
-            ViewData["FileId"] = new SelectList(_context.Files, "Id", "ContentType", song.FileId);
 
             return View(song);
         }
@@ -127,7 +121,6 @@ namespace MusicFy.Controllers
             }
             ViewData["AlbumId"] = new SelectList(_context.Albums, "Id", "Name", song.AlbumId);
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", song.AuthorId);
-            ViewData["FileId"] = new SelectList(_context.Files, "Id", "ContentType", song.FileId);
 
             return View(song);
         }
@@ -166,7 +159,6 @@ namespace MusicFy.Controllers
             }
             ViewData["AlbumId"] = new SelectList(_context.Albums, "Id", "Name", song.AlbumId);
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", song.AuthorId);
-            ViewData["FileId"] = new SelectList(_context.Files, "Id", "ContentType", song.FileId);
 
             return View(song);
         }
@@ -205,14 +197,14 @@ namespace MusicFy.Controllers
             {
                 _context.Songs.Remove(song);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool SongExists(int id)
         {
-          return (_context.Songs?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Songs?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

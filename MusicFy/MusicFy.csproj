@@ -24,4 +24,8 @@
     <ProjectReference Include="..\MF.Data\MF.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Uploads\Banners\" />
+  </ItemGroup>
+
 </Project>
