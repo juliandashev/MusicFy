@@ -20,14 +20,14 @@ namespace MF.Data.Song
         [InverseProperty("Albums")]
         public Author? Author { get; set; }
 
-        [Display(Name = "Album")]
+        [Display(Name = "Name")]
         [Required]
         [StringLength(50, MinimumLength = 3)]
         public string Name { get; set; }
 
         [Display(Name = "Album Songs")]
         [InverseProperty("Album")]
-        public virtual ICollection<Song>? Songs { get; set; }
+        public virtual ICollection<Song>? Songs { get; set; } = new List<Song>();
 
         [Display(Name = "Make Public")]
         [Required]

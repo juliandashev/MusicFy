@@ -29,6 +29,22 @@
                 </label>
             </div>
             <div class="form-group">
+                <label asp-for="Songs" class="control-label">Select Songs</label>
+                <select id="selectedSongs" class="form-control" asp-items="ViewBag.AllSongs"></select>
+                <button type="button" onclick="addSelectedSong()">Add Song</button>
+            </div>
+
+            <table id="songsTable" class="table">
+                <thead>
+                    <tr>
+                        <th>Song Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

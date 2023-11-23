@@ -27,7 +27,7 @@ namespace MusicFy.Controllers
         }
 
         // GET: Albums/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, List<int> selectedSongIds)
         {
             if (id == null || _context.Albums == null)
             {
@@ -37,10 +37,13 @@ namespace MusicFy.Controllers
             var album = await _context.Albums
                 .Include(a => a.Author)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (album == null)
             {
                 return NotFound();
             }
+
+            ViewBag.SelectedSongs = album.Songs;
 
             return View(album);
         }
@@ -49,6 +52,8 @@ namespace MusicFy.Controllers
         public IActionResult Create()
         {
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username");
+            ViewBag.AllSongs = new SelectList(_context.Songs.ToList(), "Id", "Name");
+
             return View();
         }
 
@@ -57,7 +62,7 @@ namespace MusicFy.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AuthorId,Name,isPublic")] Album album)
+        public async Task<IActionResult> Create([Bind("Id,AuthorId,Name,isPublic,Songs")] Album album)
         {
             if (album.Author == null && album.AuthorId == null)
             {
@@ -68,9 +73,13 @@ namespace MusicFy.Controllers
             {
                 _context.Add(album);
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", album.AuthorId);
+            ViewBag.AllSongs = new SelectList(_context.Songs.ToList(), "Id", "Name");
+
             return View(album);
         }
 

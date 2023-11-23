@@ -38,12 +38,6 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(
-           Path.Combine(Directory.GetCurrentDirectory(), @"Uploads")),
-    RequestPath = new PathString("/Banners")
-});
 
 app.UseRouting();
 

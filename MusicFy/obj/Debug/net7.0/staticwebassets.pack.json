@@ -245,6 +245,38 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\12_10_20231123210527.png",
+      "PackagePath": "staticwebassets\\uploads\\banners\\12_10_20231123210527.png"
+    },
+    {
+      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\12_10_20231123210539.jpg",
+      "PackagePath": "staticwebassets\\uploads\\banners\\12_10_20231123210539.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\14_11_20231123213157.jpg",
+      "PackagePath": "staticwebassets\\uploads\\banners\\14_11_20231123213157.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\5_10_20231123191157.png",
+      "PackagePath": "staticwebassets\\uploads\\banners\\5_10_20231123191157.png"
+    },
+    {
+      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\5_10_20231123191751.png",
+      "PackagePath": "staticwebassets\\uploads\\banners\\5_10_20231123191751.png"
+    },
+    {
+      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\5_10_20231123200333.jpg",
+      "PackagePath": "staticwebassets\\uploads\\banners\\5_10_20231123200333.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\6_10_20231123195816.jpg",
+      "PackagePath": "staticwebassets\\uploads\\banners\\6_10_20231123195816.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\7_10_20231123201134.jpg",
+      "PackagePath": "staticwebassets\\uploads\\banners\\7_10_20231123201134.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.MusicFy.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

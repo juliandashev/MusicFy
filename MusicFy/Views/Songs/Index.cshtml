@@ -55,7 +55,7 @@
                 <td>
                     @if (!string.IsNullOrEmpty(item.ImageFileName))
                     {
-                        <img src="@Url.Content($"~/Uploads/Banners/5_10_20231122004123_6c82fe5b-6ca1-410b-b44c-b5969e7ac3fe.png")" alt="Banner" />
+                        <img src="/uploads/banners/@item.ImageFileName" class="banner-image border border-warning rounded" alt="Banner" />
                     }
                     else
                     {

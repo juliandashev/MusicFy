@@ -10,16 +10,20 @@ using MF.Data.Song;
 using MusicFy.Data;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Hosting;
+using System.Drawing.Imaging;
+using System.Drawing;
 
 namespace MusicFy.Controllers
 {
     public class SongsController : Controller
     {
         private readonly MusicFyDbContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public SongsController(MusicFyDbContext context)
+        public SongsController(MusicFyDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: Songs
@@ -78,20 +82,25 @@ namespace MusicFy.Controllers
             {
                 if (song.ImageFile != null)
                 {
-                    using (var memoryStream = new MemoryStream())
+                    string uniqueFileName =
+                        $"{song.AlbumId}_{song.AuthorId}_{DateTime.Now:yyyyMMddHHmmss}{Path.GetExtension(song.ImageFile.FileName)}";
+
+                    string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", "banners", uniqueFileName);
+
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
-                        await song.ImageFile.CopyToAsync(memoryStream);
-                        string uniqueFileName = 
-                            $"{song.AlbumId}_{song.AuthorId}_{DateTime.Now:yyyyMMddHHmmss}_{Guid.NewGuid()}{Path.GetExtension(song.ImageFile.FileName)}";
+                        await song.ImageFile.CopyToAsync(fileStream);
+                    }
 
-                        string filePath = Path.Combine(Environment.CurrentDirectory, "Uploads", "Banners", uniqueFileName);
-
-                        using (var fileStream = new FileStream(filePath, FileMode.Create))
-                        {
-                            await memoryStream.CopyToAsync(fileStream);
-                        }
-
+                    if (IsImage(filePath))
+                    {
                         song.ImageFileName = uniqueFileName;
+                    }
+                    else
+                    {
+                        System.IO.File.Delete(filePath);
+                        ModelState.AddModelError("ImageFile", "The uploaded file is not a valid image.");
+                        return View(song);
                     }
                 }
 
@@ -104,6 +113,23 @@ namespace MusicFy.Controllers
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", song.AuthorId);
 
             return View(song);
+        }
+
+        private bool IsImage(string filePath)
+        {
+            try
+            {
+                using (var image = Image.FromFile(filePath))
+                {
+                    return image.RawFormat.Guid == ImageFormat.Jpeg.Guid ||
+                           image.RawFormat.Guid == ImageFormat.Png.Guid ||
+                           image.RawFormat.Guid == ImageFormat.Gif.Guid;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         // GET: Songs/Edit/5

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MusicFy.Data;
 
@@ -11,9 +12,11 @@ using MusicFy.Data;
 namespace MusicFy.Migrations
 {
     [DbContext(typeof(MusicFyDbContext))]
-    partial class MusicFyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231123173415_UpdateSongsList")]
+    partial class UpdateSongsList
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,7 +48,7 @@ namespace MusicFy.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("Albums", (string)null);
+                    b.ToTable("Albums");
                 });
 
             modelBuilder.Entity("MF.Data.Song.Author", b =>
@@ -80,7 +83,7 @@ namespace MusicFy.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Authors", (string)null);
+                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("MF.Data.Song.Playlist", b =>
@@ -110,7 +113,7 @@ namespace MusicFy.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("Playlists", (string)null);
+                    b.ToTable("Playlists");
                 });
 
             modelBuilder.Entity("MF.Data.Song.Song", b =>
@@ -157,7 +160,7 @@ namespace MusicFy.Migrations
 
                     b.HasIndex("PlaylistId");
 
-                    b.ToTable("Songs", (string)null);
+                    b.ToTable("Songs");
                 });
 
             modelBuilder.Entity("MF.Data.Song.Album", b =>
