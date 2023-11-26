@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MF.Data.Song;
 using MusicFy.Data;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
 
 namespace MusicFy.Controllers
 {
@@ -52,7 +53,7 @@ namespace MusicFy.Controllers
         public IActionResult Create()
         {
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username");
-            ViewBag.AllSongs = new SelectList(_context.Songs.ToList(), "Id", "Name");
+            ViewBag.AllSongsCreate = new SelectList(_context.Songs, "Id", "Name");
 
             return View();
         }
@@ -78,7 +79,35 @@ namespace MusicFy.Controllers
             }
 
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", album.AuthorId);
-            ViewBag.AllSongs = new SelectList(_context.Songs.ToList(), "Id", "Name");
+            ViewBag.AllSongsCreate = new SelectList(_context.Songs, "Id", "Name", album.Songs.Select(s => s.AlbumId == album.Id));
+
+            return View(album);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddSongs(Album album)
+        {
+            if (ModelState.IsValid)
+            {
+                if (album.Songs != null && album.Songs.Any())
+                {
+                    foreach (var song in album.Songs)
+                    {
+                        if (!_context.Entry(album).Collection(a => a.Songs).Query().Any(s => s.Id == song.Id))
+                        {
+                            album.Songs.Add(song);
+                        }
+                    }
+
+                    await _context.SaveChangesAsync();
+                }
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", album.AuthorId);
+            ViewBag.AllSongsAdd = new SelectList(_context.Songs, "Id", "Name");
 
             return View(album);
         }
@@ -96,7 +125,10 @@ namespace MusicFy.Controllers
             {
                 return NotFound();
             }
+
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", album.AuthorId);
+            ViewBag.AllSongsEdit = new SelectList(_context.Songs, "Id", "Name", album.Songs.All(s => s.Album.Id == album.Id));
+
             return View(album);
         }
 
@@ -105,7 +137,7 @@ namespace MusicFy.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,AuthorId,Name,isPublic")] Album album)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,AuthorId,Name,isPublic,Songs")] Album album)
         {
             if (id != album.Id)
             {
@@ -132,7 +164,10 @@ namespace MusicFy.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", album.AuthorId);
+            ViewBag.AllSongs = new SelectList(_context.Songs.ToList(), "Id", "Name");
+
             return View(album);
         }
 

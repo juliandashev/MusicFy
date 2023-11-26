@@ -12,37 +12,49 @@
     <div class="col-md-4">
         <form asp-action="Create" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="AuthorId" class="control-label"></label>
-                <select asp-for="AuthorId" class="form-control" asp-items="ViewBag.AuthorId"></select>
-            </div>
+
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="AuthorId" class="control-label"></label>
+                <select asp-for="AuthorId" class="form-control" asp-items="ViewBag.AuthorId"></select>
+                <span asp-validation-for="AuthorId" class="text-danger"></span>
+            </div>
+
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="isPublic" /> @Html.DisplayNameFor(model => model.isPublic)
                 </label>
             </div>
+
             <div class="form-group">
-                <label asp-for="Songs" class="control-label">Select Songs</label>
-                <select id="selectedSongs" class="form-control" asp-items="ViewBag.AllSongs"></select>
-                <button type="button" onclick="addSelectedSong()">Add Song</button>
+                <label asp-for="Songs" class="control-label">Album songs: </label>
+
+                <ol>
+                    @foreach (var item in ViewBag.AllSongsCreate)
+                    {
+                        <li> @item.Text</li>
+                    }
+                </ol>
+
+                <span asp-validation-for="Songs" class="text-danger"></span>
             </div>
 
-            <table id="songsTable" class="table">
-                <thead>
-                    <tr>
-                        <th>Song Name</th>
-                        <!-- Добавете още колони, ако е необходимо -->
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Редове на таблицата ще бъдат добавяни от JavaScript -->
-                </tbody>
-            </table>
+            @* <form asp-action="AddSongs" method="post" enctype="multipart/form-data" class="form-group">
+                <div class="form-group">
+                    <label asp-for="Songs" class="control-label">Select Songs</label>
+                    <select asp-for="Songs" class="form-control" asp-items="ViewBag.AllSongs" multiple></select>
+                    <span asp-validation-for="Songs" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary">Add Songs</button>
+                </div>
+            </form> *@
 
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

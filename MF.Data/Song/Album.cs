@@ -27,7 +27,7 @@ namespace MF.Data.Song
 
         [Display(Name = "Album Songs")]
         [InverseProperty("Album")]
-        public virtual ICollection<Song>? Songs { get; set; } = new List<Song>();
+        public virtual List<Song>? Songs { get; set; } = new List<Song>();
 
         [Display(Name = "Make Public")]
         [Required]
