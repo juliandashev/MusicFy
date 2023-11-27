@@ -30,32 +30,10 @@
                     <input class="form-check-input" asp-for="isPublic" /> @Html.DisplayNameFor(model => model.isPublic)
                 </label>
             </div>
-
             <div class="form-group">
-                <label asp-for="Songs" class="control-label">Album songs: </label>
-
-                <ol>
-                    @foreach (var item in ViewBag.AllSongsCreate)
-                    {
-                        <li> @item.Text</li>
-                    }
-                </ol>
-
-                <span asp-validation-for="Songs" class="text-danger"></span>
+                <label asp-for="Songs" class="control-label"></label>
+                <select asp-for="Songs" class="form-control" asp-items="ViewBag.AllSongs"></select>
             </div>
-
-            @* <form asp-action="AddSongs" method="post" enctype="multipart/form-data" class="form-group">
-                <div class="form-group">
-                    <label asp-for="Songs" class="control-label">Select Songs</label>
-                    <select asp-for="Songs" class="form-control" asp-items="ViewBag.AllSongs" multiple></select>
-                    <span asp-validation-for="Songs" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
-                    <button type="button" class="btn btn-primary">Add Songs</button>
-                </div>
-            </form> *@
-
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

@@ -52,8 +52,8 @@ namespace MusicFy.Controllers
         // GET: Albums/Create
         public IActionResult Create()
         {
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username");
-            ViewBag.AllSongsCreate = new SelectList(_context.Songs, "Id", "Name");
+            ViewData["AuthorId"] = new SelectList(_context.Set<Author>(), "Id", "Username");
+            ViewData["AllSongs"] = new SelectList(_context.Set<Song>(), "Id", "Name");
 
             return View();
         }
@@ -72,43 +72,31 @@ namespace MusicFy.Controllers
 
             if (ModelState.IsValid)
             {
+                if (album.Songs != null && album.Songs.Any())
+                {
+                    foreach (var songId in album.Songs)
+                    {
+                        var song = await _context.Songs.FindAsync(songId);
+                        
+                        if (song != null)
+                        {
+                            if (!_context.Entry(album).Collection(a => a.Songs).Query().Any(s => s.Id == song.Id))
+                            {
+                                album.Songs.Add(song);
+                            }
+                        }
+                    }
+                }
+
                 _context.Add(album);
                 await _context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", album.AuthorId);
-            ViewBag.AllSongsCreate = new SelectList(_context.Songs, "Id", "Name", album.Songs.Select(s => s.AlbumId == album.Id));
-
-            return View(album);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddSongs(Album album)
-        {
-            if (ModelState.IsValid)
-            {
-                if (album.Songs != null && album.Songs.Any())
-                {
-                    foreach (var song in album.Songs)
-                    {
-                        if (!_context.Entry(album).Collection(a => a.Songs).Query().Any(s => s.Id == song.Id))
-                        {
-                            album.Songs.Add(song);
-                        }
-                    }
-
-                    await _context.SaveChangesAsync();
-                }
-
-                return RedirectToAction(nameof(Index));
-            }
-
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", album.AuthorId);
-            ViewBag.AllSongsAdd = new SelectList(_context.Songs, "Id", "Name");
-
+            ViewData["AuthorId"] = new SelectList(_context.Set<Author>(), "Id", "Username", album.AuthorId);
+            ViewData["AllSongs"] = new SelectList(_context.Set<Song>(), "Id", "Name", album.Songs);
+        
             return View(album);
         }
 
@@ -121,14 +109,15 @@ namespace MusicFy.Controllers
             }
 
             var album = await _context.Albums.FindAsync(id);
+
             if (album == null)
             {
                 return NotFound();
             }
 
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", album.AuthorId);
-            ViewBag.AllSongsEdit = new SelectList(_context.Songs, "Id", "Name", album.Songs.All(s => s.Album.Id == album.Id));
-
+            ViewData["AuthorId"] = new SelectList(_context.Set<Author>(), "Id", "Username", album.AuthorId);
+            ViewData["AllSongs"] = new SelectList(_context.Songs.Where(x => x.AlbumId == id), "Id", "Name", album.Songs);
+          
             return View(album);
         }
 
@@ -166,7 +155,7 @@ namespace MusicFy.Controllers
             }
 
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", album.AuthorId);
-            ViewBag.AllSongs = new SelectList(_context.Songs.ToList(), "Id", "Name");
+            // ViewBag.AllSongs = new List<Song>(album.Songs.FindAll(s => s.Album.Id == id).ToList());;
 
             return View(album);
         }

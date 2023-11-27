@@ -21,7 +21,6 @@ namespace MF.Data.Song
         [InverseProperty("Songs")]
         public Author? Author { get; set; }
 
-        [Required(ErrorMessage = "AlbumId is required")]
         public int? AlbumId { get; set; }
 
         [ForeignKey("AlbumId")]

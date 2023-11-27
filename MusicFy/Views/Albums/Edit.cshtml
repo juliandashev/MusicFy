@@ -33,7 +33,7 @@
             <div class="form-group">
                 <label asp-for="Songs" class="control-label">Songs:</label>
                 <ol>
-                    @foreach (var item in ViewBag.AllSongsEdit)
+                    @foreach (var item in ViewBag.AllSongs)
                     {
                         <li>@item.Text</li>
                     }

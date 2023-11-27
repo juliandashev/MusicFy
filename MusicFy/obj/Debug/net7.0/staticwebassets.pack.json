@@ -293,8 +293,24 @@
       "PackagePath": "staticwebassets\\uploads\\banners\\6_10_20231123195816.jpg"
     },
     {
+      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\6_1_20231127092630.png",
+      "PackagePath": "staticwebassets\\uploads\\banners\\6_1_20231127092630.png"
+    },
+    {
+      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\6_1_20231127092644.png",
+      "PackagePath": "staticwebassets\\uploads\\banners\\6_1_20231127092644.png"
+    },
+    {
       "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\7_10_20231123201134.jpg",
       "PackagePath": "staticwebassets\\uploads\\banners\\7_10_20231123201134.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\7_1_20231127092659.png",
+      "PackagePath": "staticwebassets\\uploads\\banners\\7_1_20231127092659.png"
+    },
+    {
+      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\7_1_20231127092713.png",
+      "PackagePath": "staticwebassets\\uploads\\banners\\7_1_20231127092713.png"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.MusicFy.Microsoft.AspNetCore.StaticWebAssets.props",
