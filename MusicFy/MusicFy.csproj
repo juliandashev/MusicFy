@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\uploads\banners\" />
+    <Folder Include="wwwroot\uploads\banners\updated\" />
   </ItemGroup>
 
 </Project>

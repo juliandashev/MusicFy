@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Hosting;
 using System.Drawing.Imaging;
 using System.Drawing;
+using NuGet.Packaging.Signing;
 
 namespace MusicFy.Controllers
 {
@@ -156,7 +157,7 @@ namespace MusicFy.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,AuthorId,AlbumId,Duration,Listeners,DateCreated")] Song song)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,AuthorId,AlbumId,Duration,Listeners,DateCreated,ImageFile")] Song song)
         {
             if (id != song.Id)
             {
@@ -167,6 +168,36 @@ namespace MusicFy.Controllers
             {
                 try
                 {
+                    if (song.ImageFile != null)
+                    {
+                        string uniqueFileName =
+                            $"{song.AlbumId}_{song.AuthorId}_{DateTime.Now:yyyyMMddHHmmss}{Path.GetExtension(song.ImageFile.FileName)}";
+
+                        string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", "banners", uniqueFileName);
+
+                        // delete old image if it exists
+                        if (System.IO.File.Exists(filePath))
+                        {
+                            System.IO.File.Delete(filePath);
+                        }
+
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await song.ImageFile.CopyToAsync(fileStream);
+                        }
+
+                        if (IsImage(filePath))
+                        {
+                            song.ImageFileName = uniqueFileName;
+                        }
+                        else
+                        {
+                            System.IO.File.Delete(filePath);
+                            ModelState.AddModelError("ImageFile", "The uploaded file is not a valid image.");
+                            return View(song);
+                        }
+                    }
+
                     _context.Update(song);
                     await _context.SaveChangesAsync();
                 }
@@ -222,6 +253,7 @@ namespace MusicFy.Controllers
             if (song != null)
             {
                 _context.Songs.Remove(song);
+                System.IO.File.Delete(song.ImageFileName);
             }
 
             await _context.SaveChangesAsync();

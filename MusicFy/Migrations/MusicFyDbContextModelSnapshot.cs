@@ -45,7 +45,7 @@ namespace MusicFy.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("Albums", (string)null);
+                    b.ToTable("Albums");
                 });
 
             modelBuilder.Entity("MF.Data.Song.Author", b =>
@@ -80,7 +80,7 @@ namespace MusicFy.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Authors", (string)null);
+                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("MF.Data.Song.Playlist", b =>
@@ -110,7 +110,7 @@ namespace MusicFy.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("Playlists", (string)null);
+                    b.ToTable("Playlists");
                 });
 
             modelBuilder.Entity("MF.Data.Song.Song", b =>
@@ -122,7 +122,6 @@ namespace MusicFy.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int?>("AlbumId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("AuthorId")
@@ -157,7 +156,7 @@ namespace MusicFy.Migrations
 
                     b.HasIndex("PlaylistId");
 
-                    b.ToTable("Songs", (string)null);
+                    b.ToTable("Songs");
                 });
 
             modelBuilder.Entity("MF.Data.Song.Album", b =>
@@ -184,9 +183,7 @@ namespace MusicFy.Migrations
                 {
                     b.HasOne("MF.Data.Song.Album", "Album")
                         .WithMany("Songs")
-                        .HasForeignKey("AlbumId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AlbumId");
 
                     b.HasOne("MF.Data.Song.Author", "Author")
                         .WithMany("Songs")
