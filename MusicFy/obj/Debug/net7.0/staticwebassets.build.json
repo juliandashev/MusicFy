@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "w0keKbbn/W62+ohZD8Fuf4hD2VnPnmPGeyctbpY2iWw=",
+  "Hash": "gqgX6eL/uUY8/0W3uY27/viRP4z5KVL4L4HBCBll+IU=",
   "Source": "MusicFy",
   "BasePath": "_content/MusicFy",
   "Mode": "Default",
@@ -2091,12 +2091,12 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\_1_20231128144014.png",
+      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\30__1.jpg",
       "SourceId": "MusicFy",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\",
       "BasePath": "_content/MusicFy",
-      "RelativePath": "uploads/banners/_1_20231128144014.png",
+      "RelativePath": "uploads/banners/30__1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2105,15 +2105,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\banners\\_1_20231128144014.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\banners\\30__1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\_1_20231128144941.png",
+      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\32__1.jpg",
       "SourceId": "MusicFy",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\",
       "BasePath": "_content/MusicFy",
-      "RelativePath": "uploads/banners/_1_20231128144941.png",
+      "RelativePath": "uploads/banners/32__1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2122,15 +2122,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\banners\\_1_20231128144941.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\banners\\32__1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\_1_20231128145104.png",
+      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\33__1.jpg",
       "SourceId": "MusicFy",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\",
       "BasePath": "_content/MusicFy",
-      "RelativePath": "uploads/banners/_1_20231128145104.png",
+      "RelativePath": "uploads/banners/33__1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2139,15 +2139,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\banners\\_1_20231128145104.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\banners\\33__1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\_1_20231128163413.png",
+      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\34__1.jpg",
       "SourceId": "MusicFy",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\",
       "BasePath": "_content/MusicFy",
-      "RelativePath": "uploads/banners/_1_20231128163413.png",
+      "RelativePath": "uploads/banners/34__1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2156,15 +2156,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\banners\\_1_20231128163413.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\banners\\34__1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\_1_20231128165945.png",
+      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\35__1.jpg",
       "SourceId": "MusicFy",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\",
       "BasePath": "_content/MusicFy",
-      "RelativePath": "uploads/banners/_1_20231128165945.png",
+      "RelativePath": "uploads/banners/35__1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2173,15 +2173,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\banners\\_1_20231128165945.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\banners\\35__1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\_1_20231128165950.jpg",
+      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\36__1.jpg",
       "SourceId": "MusicFy",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\",
       "BasePath": "_content/MusicFy",
-      "RelativePath": "uploads/banners/_1_20231128165950.jpg",
+      "RelativePath": "uploads/banners/36__1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2190,15 +2190,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\banners\\_1_20231128165950.jpg"
+      "OriginalItemSpec": "wwwroot\\uploads\\banners\\36__1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\1_1_20231125020159.png",
+      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\40__1.jpg",
       "SourceId": "MusicFy",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\",
       "BasePath": "_content/MusicFy",
-      "RelativePath": "uploads/banners/1_1_20231125020159.png",
+      "RelativePath": "uploads/banners/40__1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2207,15 +2207,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\banners\\1_1_20231125020159.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\banners\\40__1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\1_1_20231126172411.png",
+      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\45_6_1.jpg",
       "SourceId": "MusicFy",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\",
       "BasePath": "_content/MusicFy",
-      "RelativePath": "uploads/banners/1_1_20231126172411.png",
+      "RelativePath": "uploads/banners/45_6_1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2224,15 +2224,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\banners\\1_1_20231126172411.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\banners\\45_6_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\1_1_20231126191229.jpg",
+      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\46_6_1.jpg",
       "SourceId": "MusicFy",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\",
       "BasePath": "_content/MusicFy",
-      "RelativePath": "uploads/banners/1_1_20231126191229.jpg",
+      "RelativePath": "uploads/banners/46_6_1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2241,15 +2241,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\banners\\1_1_20231126191229.jpg"
+      "OriginalItemSpec": "wwwroot\\uploads\\banners\\46_6_1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\updated\\_1_20231128163423_Updated.jpg",
+      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\46_6_1.png",
       "SourceId": "MusicFy",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\",
       "BasePath": "_content/MusicFy",
-      "RelativePath": "uploads/banners/updated/_1_20231128163423_Updated.jpg",
+      "RelativePath": "uploads/banners/46_6_1.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2258,15 +2258,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\banners\\updated\\_1_20231128163423_Updated.jpg"
+      "OriginalItemSpec": "wwwroot\\uploads\\banners\\46_6_1.png"
     },
     {
-      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\updated\\_1_20231128163854_Updated.png",
+      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\songs\\45_6_1.mp3",
       "SourceId": "MusicFy",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\",
       "BasePath": "_content/MusicFy",
-      "RelativePath": "uploads/banners/updated/_1_20231128163854_Updated.png",
+      "RelativePath": "uploads/songs/45_6_1.mp3",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2275,15 +2275,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\banners\\updated\\_1_20231128163854_Updated.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\songs\\45_6_1.mp3"
     },
     {
-      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\updated\\_1_20231128163920_Updated.jpg",
+      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\songs\\46_6_1.mp3",
       "SourceId": "MusicFy",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\",
       "BasePath": "_content/MusicFy",
-      "RelativePath": "uploads/banners/updated/_1_20231128163920_Updated.jpg",
+      "RelativePath": "uploads/songs/46_6_1.mp3",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2292,24 +2292,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\banners\\updated\\_1_20231128163920_Updated.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\updated\\_1_20231128164019_Updated.jpg",
-      "SourceId": "MusicFy",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\",
-      "BasePath": "_content/MusicFy",
-      "RelativePath": "uploads/banners/updated/_1_20231128164019_Updated.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\banners\\updated\\_1_20231128164019_Updated.jpg"
+      "OriginalItemSpec": "wwwroot\\uploads\\songs\\46_6_1.mp3"
     }
   ]
 }

@@ -46,6 +46,15 @@
         <dd class="col-sm-10">
             <img src="\uploads\banners\@Model.ImageFileName" alt="Banner" class="square-image border border-warning rounded" />
         </dd>
+        <dt class ="col-sm-2">
+            @Html.DisplayNameFor(model => model.MusicFile)
+        </dt>
+        <dd class="col-sm-10">
+            <audio controls>
+                <source src="/uploads/songs/@Model.MusicFileName" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+        </dd>
     </dl>
 </div>
 <div>

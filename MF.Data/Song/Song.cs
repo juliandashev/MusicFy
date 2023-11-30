@@ -11,7 +11,7 @@ namespace MF.Data.Song
 
         [Display(Name = "Song name")]
         [Required(ErrorMessage = "Song name is required")]
-        [StringLength(20, MinimumLength = 3)]
+        [StringLength(50, MinimumLength = 3)]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "AuthorId is required")]
@@ -42,5 +42,11 @@ namespace MF.Data.Song
         [Display(Name = "Upload song banner")]
         [NotMapped]
         public IFormFile? ImageFile { get; set; }
+
+        [Display(Name = "Upload song")]
+        [NotMapped]
+        public IFormFile? MusicFile { get; set; }
+
+        public string? MusicFileName { get; set; }
     }
 }

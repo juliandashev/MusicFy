@@ -140,6 +140,9 @@ namespace MusicFy.Migrations
                     b.Property<long>("Listeners")
                         .HasColumnType("bigint");
 
+                    b.Property<string>("MusicFileName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(20)

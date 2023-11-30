@@ -6,12 +6,12 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                Play
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
@@ -38,6 +38,11 @@
         {
             <tr>
                 <td>
+                    <button class="btn btn-outline-light btn-circle" aria-label="Play">
+                        <i class="bi bi-play" alt="Play"></i>
+                    </button>
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
@@ -53,14 +58,7 @@
                     @Html.DisplayFor(modelItem => item.Listeners)
                 </td>
                 <td>
-                    @if (!string.IsNullOrEmpty(item.ImageFileName))
-                    {
-                        <img src="/uploads/banners/@item.ImageFileName" class="banner-image border border-warning rounded" alt="Banner" />
-                    }
-                    else
-                    {
-                        <span>No Banner</span>
-                    }
+                    <img src="/uploads/banners/@item.ImageFileName" class="banner-image border border-warning rounded" alt="Banner" />
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
@@ -71,3 +69,5 @@
         }
     </tbody>
 </table>
+
+<button onclick="location.href='@Url.Action("Create", "Songs")';" class="btn btn-outline-warning">Create new</button>

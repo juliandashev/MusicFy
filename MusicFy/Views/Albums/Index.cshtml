@@ -6,9 +6,6 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -45,3 +42,5 @@
 }
     </tbody>
 </table>
+
+<button onclick="location.href='@Url.Action("Create", "Albums")';" class="btn btn-outline-warning">Create new</button>
