@@ -17,7 +17,7 @@ function previewImage() {
     }
 }
 document.addEventListener('DOMContentLoaded', function () {
-    var songFileUpload = document.getElementById('song-file-upload');
+    var songFileUpload = document.getElementById('audio');
 
     if (songFileUpload) {
         songFileUpload.addEventListener('change', handleSongFileUpload, false);
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function handleSongFileUpload() {
-    var fInput = document.getElementById('song-file-upload');
+    var fInput = document.getElementById('audio');
     var file = fInput.files[0];
 
     if (file) {

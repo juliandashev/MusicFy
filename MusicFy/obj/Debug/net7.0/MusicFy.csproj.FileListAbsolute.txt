@@ -263,3 +263,9 @@ C:\Users\Intel\source\repos\MusicFy\MusicFy\bin\Debug\net7.0\ru\Microsoft.CodeAn
 C:\Users\Intel\source\repos\MusicFy\MusicFy\bin\Debug\net7.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Intel\source\repos\MusicFy\MusicFy\bin\Debug\net7.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Intel\source\repos\MusicFy\MusicFy\bin\Debug\net7.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Intel\source\repos\MusicFy\MusicFy\bin\Debug\net7.0\NAudio.dll
+C:\Users\Intel\source\repos\MusicFy\MusicFy\bin\Debug\net7.0\NAudio.Asio.dll
+C:\Users\Intel\source\repos\MusicFy\MusicFy\bin\Debug\net7.0\NAudio.Core.dll
+C:\Users\Intel\source\repos\MusicFy\MusicFy\bin\Debug\net7.0\NAudio.Midi.dll
+C:\Users\Intel\source\repos\MusicFy\MusicFy\bin\Debug\net7.0\NAudio.Wasapi.dll
+C:\Users\Intel\source\repos\MusicFy\MusicFy\bin\Debug\net7.0\NAudio.WinMM.dll

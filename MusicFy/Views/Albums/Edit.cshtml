@@ -41,17 +41,18 @@
                     <tbody>
                         @{
                             int i = 1;
-                        }
-                        @foreach (var item in ViewBag.AllSongs)
-                        {
-                            <tr>
-                                <td>@(i++)</td>
-                                <td>
-                                    <a href="/Songs/Details/@item.Value">
-                                        @item.Text
-                                    </a>
-                                </td>
-                            </tr>
+                            
+                            foreach (var item in ViewBag.AllSongs)
+                            {
+                                <tr>
+                                    <td>@(i++)</td>
+                                    <td>
+                                        <a href="/Songs/Details/@item.Value">
+                                            @item.Text
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
                         }
                     </tbody>
                 </table>

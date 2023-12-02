@@ -131,22 +131,22 @@ namespace MusicFy.Migrations
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Duration")
-                        .HasColumnType("int");
+                    b.Property<string>("Duration")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageFileName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("Listeners")
-                        .HasColumnType("bigint");
+                    b.Property<decimal>("Listeners")
+                        .HasColumnType("decimal(20,0)");
 
                     b.Property<string>("MusicFileName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int?>("PlaylistId")
                         .HasColumnType("int");

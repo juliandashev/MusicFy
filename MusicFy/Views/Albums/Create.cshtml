@@ -31,37 +31,13 @@
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="Songs">Select a song:</label>
-                <select asp-for="Songs" class="form-control" asp-items="ViewBag.AllSongs">
-                    <option value="songId">--Select a song--</option>
+                <label for="selectedSongIds">Select songs to add:</label>
+                <select multiple="multiple" id="selectedSongIds" name="selectedSongIds" class="form-control">
+                    @foreach (var song in ViewBag.AddedSongs)
+                    {
+                        <option value="@song.Id">@song.Title</option>
+                    }
                 </select>
-
-                <input type="button" value="Add" class="btn btn-primary" />
-
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th><label asp-for="Songs" class="control-label">Songs:</label></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @{
-                            int i = 1;
-                        }
-                        @foreach (var item in ViewBag.AddedSongs)
-                        {
-                            <tr>
-                                <td>@(i++)</td>
-                                <td>
-                                    <a href="/Songs/Details/@item.Value">
-                                        @item.Text
-                                    </a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

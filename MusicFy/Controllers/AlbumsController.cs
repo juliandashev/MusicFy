@@ -64,7 +64,7 @@ namespace MusicFy.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AuthorId,Name,isPublic,Songs")] Album album, int songId)
+        public async Task<IActionResult> Create([Bind("Id,AuthorId,Name,isPublic,Songs")] Album album, List<int> selectedSongIds)
         {
             if (album.Author == null && album.AuthorId == null)
             {
@@ -73,26 +73,23 @@ namespace MusicFy.Controllers
 
             if (ModelState.IsValid)
             {
-                if (album.Songs != null && album.Songs.Any())
+                var songs = await _context.Songs.Where(s => selectedSongIds.Contains(s.Id)).ToListAsync();
+
+                foreach (var song in songs)
                 {
-                    if (_context.Songs == null)
-                    {
-                        return Problem("Entity set 'MusicFyDbContext.Songs'  is null.");
-                    }
-
-                    var song = await _context.Songs.FindAsync(songId);
-
-                    if (song != null)
-                        album.Songs.Add(song);
-
-                    await _context.SaveChangesAsync();
+                    album.Songs.Add(song);
                 }
+
+                _context.Add(album);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
             }
 
             ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Username", album.AuthorId);
             ViewData["AddedSongs"] = new SelectList(_context.Songs.Where(x => x.AlbumId == album.Id), "Id", "Name", album.Songs);
 
-            return RedirectToAction(nameof(Index));
+            return View(album);
         }
 
         // GET: Albums/Edit/5
@@ -193,6 +190,7 @@ namespace MusicFy.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // -------------------------------------------------------------------------------
         private bool AlbumExists(int id)
         {
             return (_context.Albums?.Any(e => e.Id == id)).GetValueOrDefault();

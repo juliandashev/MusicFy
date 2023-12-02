@@ -44,9 +44,63 @@
     </div>
 
     <footer class="border-top footer text-muted scaled-footer">
-        <div class="container text-center">
-            &copy; 2023 - MusicFy - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div class="container align-items-center text-center">
+            <div class="row align-items-start">
+
+                <div class="col-md-2" style="text-align: right">2:11</div> <!--Current time on the song-->
+
+                <div class="col-md-6">
+                    <input type="range" min="0" max="100" step="1" value="50" name="timestamp" id="slider_timestamp"/>
+                </div>
+
+                <div class="col-md-2" style="text-align: left"> 5:43</div> <!--Song duration-->
+            </div>
         </div>
+        <div class="container align-items-center text-center"><!--Song banner with title-->
+            <div class="row align-items-center">
+                <div class="col-md-2">
+                    <div class="row">
+                        <div class="col-sm-6">Banner</div>
+                        <div class="col-sm-6">Song name
+                                        <p>Song artist</div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <button class="btn btn-close-white btn_controller_circle" type="submit" name="action" value="Replay">
+                        <!--Replay song-->
+                        <i class="bi bi-arrow-clockwise"></i>
+                    </button>
+
+                    <button class="btn btn-close-white btn_controller_circle" type="submit" name="action" value="Replay">
+                        <!--Skip to next song-->
+                        <i class="bi bi-skip-backward-fill"></i>
+                    </button>
+
+                    <button class="btn btn-close-white btn_controller_circle" type="submit" name="action" value="PlayPause">
+                        <!--Play/Pause song-->
+                        <i class="bi bi-play-circle-fill"></i>
+                    </button>
+
+                    <button class="btn btn-close-white btn_controller_circle" type="submit" name="action" value="Skip">
+                        <!--Skip to next song-->
+                        <i class="bi bi-skip-forward-fill"></i>
+                    </button>
+                </div>
+
+                <div class="col-md-4"> <!--Volue slider-->
+                    <div class="input-group align-items-center">
+                        <span class="input-group-addon">
+                            <span class="bi bi-volume-up-fill btn-close-white btn_controller_circle"></span>
+                        </span>
+
+                        <input type="range" min="0" max="100" step="1" value="50" id="slider" name="volume" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

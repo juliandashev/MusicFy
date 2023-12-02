@@ -27,11 +27,11 @@ namespace MF.Data.Song
         [InverseProperty("Songs")]
         public Album? Album { get; set; }
 
-        [Display(Name = "Song duration in seconds")]
-        public ushort Duration { get; private set; } = 0;
+        [Display(Name = "Song duration")]
+        public string? Duration { get; set; }
 
         [Display(Name = "All time listeners")]
-        public uint Listeners { get; private set; } = 0;
+        public ulong Listeners { get; private set; } = 0;
 
         [Display(Name = "Date added")]
         [DataType(dataType: DataType.Date)]

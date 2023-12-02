@@ -23,22 +23,22 @@ namespace MF.Data.Song
 
         [Display(Name = "Author's username")]
         [Required]
-        [StringLength(20, MinimumLength = 3)]
+        [StringLength(60, MinimumLength = 3)]
         public string Username { get; set; }
 
         [Display(Name = "Author's albums released")]
         [InverseProperty("Author")]
-        public virtual ICollection<Album>? Albums { get; set; }
+        public virtual List<Album>? Albums { get; set; }
 
         [Display(Name = "Author's songs released")]
         [InverseProperty("Author")]
-        public virtual ICollection<Song>? Songs { get; set; }
+        public virtual List<Song>? Songs { get; set; }
 
         [Display(Name = "Author's followers")]
-        public int Followers { get; private set; } = 0;
+        public int Followers { get; set; } = 0;
 
         [Display(Name = "Author's total monthly listeners")]
-        public int MonthlyListeners { get; private set; } = 0;
+        public int MonthlyListeners { get; set; } = 0;
 
         [Display(Name = "Date when account was created")]
         [DataType(DataType.Date)]

@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ImageFile" class="control-label"></label>
-                <input asp-for="ImageFile" type="file" class="form-control" id="fileInput" onchange="previewImage()" />
+                <input asp-for="ImageFile" type="file" class="form-control" id="fileInput" accept="image/png, image/jpeg" onchange="previewImage()" />
                 <span asp-validation-for="ImageFile" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -37,9 +37,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="MusicFile" class="control-label"></label>
-                <input asp-for="MusicFile" type="file" class="form-control" id="audio"/>
+                <input asp-for="MusicFile" type="file" id="audio" class="form-control" accept=".mp3"  />
             </div>
-
             <div class="form-group">
                 <audio id="previewAudio" controls>
                     <source src="" type="audio/mp3" />
@@ -47,7 +46,7 @@
                 </audio>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-outline-warning" />
             </div>
         </form>
     </div>

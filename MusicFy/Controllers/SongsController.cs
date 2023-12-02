@@ -14,6 +14,8 @@ using System.Drawing.Imaging;
 using System.Drawing;
 using NuGet.Packaging.Signing;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using NAudio.Wave;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace MusicFy.Controllers
 {
@@ -69,7 +71,7 @@ namespace MusicFy.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,AuthorId,AlbumId,ImageFile,MusicFile")] Song song)
+        public async Task<IActionResult> Create([Bind("Id,Name,AuthorId,AlbumId,Duration,ImageFile,MusicFile")] Song song)
         {
             bool isNull =
                 song.Album == null && song.AlbumId == null &&
@@ -89,6 +91,13 @@ namespace MusicFy.Controllers
                 await UploadSongAsync(song); // upload a song
 
                 return RedirectToAction(nameof(Index));
+            }
+
+            IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(x => x.Errors);
+
+            foreach (var error in allErrors)
+            {
+                await Console.Out.WriteLineAsync(error + " ");
             }
 
             ViewData["AlbumId"] = new SelectList(_context.Albums, "Id", "Name", song.AlbumId);
@@ -256,6 +265,7 @@ namespace MusicFy.Controllers
                 if (IsMp3(filePath))
                 {
                     song.MusicFileName = uniqueFileName;
+                    song.Duration = FormatTimeSpan(GetDuration(filePath));
                     await _context.SaveChangesAsync();
                 }
                 else
@@ -263,6 +273,26 @@ namespace MusicFy.Controllers
                     System.IO.File.Delete(filePath);
                     ModelState.AddModelError("MusicFile", "Invalid file format. Please upload a valid mp3 file.");
                 }
+            }
+        }
+
+        private static string FormatTimeSpan(TimeSpan timeSpan)
+        {
+            if (timeSpan.Hours > 0)
+            {
+                return $"{timeSpan.Hours}:{timeSpan.Minutes:00}:{timeSpan.Seconds:00}";
+            }
+            else
+            {
+                return $"{timeSpan.Minutes}:{timeSpan.Seconds:00}";
+            }
+        }
+
+        private static TimeSpan GetDuration(string filePath)
+        {
+            using (var reader = new Mp3FileReader(filePath))
+            {
+                return reader.TotalTime;
             }
         }
 
