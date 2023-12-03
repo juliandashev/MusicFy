@@ -16,6 +16,9 @@ using NuGet.Packaging.Signing;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using NAudio.Wave;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Extensions.FileSystemGlobbing.Internal;
+using System.Text.RegularExpressions;
+using X.PagedList;
 
 namespace MusicFy.Controllers
 {
@@ -31,11 +34,44 @@ namespace MusicFy.Controllers
         }
 
         // GET: Songs
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchTitle, int? searchAlbumId, string sortOrder, int? page)
         {
-            var musicFyDbContext = _context.Songs.Include(s => s.Album).Include(s => s.Author);
+            int pageCurrent = page ?? 1; //page == null ? 1 : page
+            int pageMaxSize = 3;
 
-            return View(await musicFyDbContext.ToListAsync());
+            var songs = _context.Songs.Include(s => s.Album).Include(s => s.Author).AsQueryable();
+            ViewBag.Albums = new SelectList(_context.Albums, "Id", "Name");
+
+            ViewBag.TitleSearch = searchTitle;
+            if (!string.IsNullOrEmpty(searchTitle))
+                songs = songs.Where(x => x.Name.Contains(searchTitle));
+
+            ViewBag.AlbumIdSearch = searchAlbumId.ToString();
+            if (searchAlbumId.HasValue)
+                songs = songs.Where(x => x.AlbumId == searchAlbumId);
+
+            ViewBag.SortOrder = sortOrder;
+            ViewBag.TitleSortParam = string.IsNullOrEmpty(sortOrder) ? "title-desc" : "";
+            ViewBag.ReleaseDateSortParam = sortOrder == "rdate-desc" ? "rdate-asc" : "rdate-desc";
+
+            switch (sortOrder)
+            {
+                case "title-desc":
+                    songs = songs.OrderByDescending(x => x.Name);
+                    break;
+                case "rdate-desc":
+                    songs = songs.OrderByDescending(x => x.DateCreated);
+                    break;
+                case "rdate-asc":
+                    songs = songs.OrderBy(x => x.DateCreated);
+                    break;
+                default:
+                    songs = songs.OrderBy(x => x.Name);
+                    break;
+
+            }
+
+            return View(await songs.ToPagedListAsync(pageCurrent, pageMaxSize));
         }
 
         // GET: Songs/Details/5
@@ -130,7 +166,7 @@ namespace MusicFy.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,AuthorId,AlbumId,Duration,Listeners,DateCreated,ImageFile")] Song song)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,AuthorId,AlbumId,Duration,Listeners,DateCreated,ImageFile,MusicFile")] Song song)
         {
             if (id != song.Id)
             {
@@ -196,16 +232,11 @@ namespace MusicFy.Controllers
                 return Problem("Entity set 'MusicFyDbContext.Songs'  is null.");
             }
             var song = await _context.Songs.FindAsync(id);
+
             if (song != null)
             {
-                string uniqueFileName = song.ImageFileName ?? "";
-                string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", "banners", uniqueFileName);
-
-                if (System.IO.File.Exists(filePath))
-                {
-                    System.IO.File.Delete(filePath);
-                }
-                //song.ImageFileName = null;
+                DeleteEntity("Image", id);
+                DeleteEntity("Song", id);
 
                 _context.Songs.Remove(song);
             }
@@ -215,6 +246,35 @@ namespace MusicFy.Controllers
         }
 
         // --------------------------------------------------------------------------------------------------------------------------
+
+        private void DeleteEntity(string type, int id)
+        {
+            string pattern = $"^({id})";
+            string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
+
+            switch (type)
+            {
+                case "Image":
+                    filePath += "/banners/";
+                    break;
+                case "Song":
+                    filePath += "/songs/";
+                    break;
+                default:
+                    filePath += string.Empty;
+                    break;
+            }
+
+            string[] files = Directory.GetFiles(filePath);
+
+            foreach (string file in files)
+            {
+                if (Regex.IsMatch(Path.GetFileName(file), pattern))
+                {
+                    System.IO.File.Delete(file);
+                }
+            }
+        }
 
         private bool SongExists(int id)
         {
@@ -280,11 +340,11 @@ namespace MusicFy.Controllers
         {
             if (timeSpan.Hours > 0)
             {
-                return $"{timeSpan.Hours}:{timeSpan.Minutes:00}:{timeSpan.Seconds:00}";
+                return $"{timeSpan.Hours:00}:{timeSpan.Minutes:00}:{timeSpan.Seconds:00}";
             }
             else
             {
-                return $"{timeSpan.Minutes}:{timeSpan.Seconds:00}";
+                return $"{timeSpan.Minutes:00}:{timeSpan.Seconds:00}";
             }
         }
 
@@ -298,66 +358,14 @@ namespace MusicFy.Controllers
 
         private async Task UpdateImageAsync(Song song)
         {
-            if (song.ImageFile != null)
-            {
-                string uniqueFileName =
-                    $"{song.Id}_{song.AlbumId}_{song.AuthorId}{Path.GetExtension(song.ImageFile.FileName)}";
-
-                string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", "banners", uniqueFileName);
-
-                // delete old image if it exists
-                if (System.IO.File.Exists(filePath)) // checks if the old image exists
-                {
-                    System.IO.File.Delete(filePath);
-                }
-
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await song.ImageFile.CopyToAsync(fileStream);
-                }
-
-                if (IsImage(filePath))
-                {
-                    song.ImageFileName = uniqueFileName;
-                }
-                else
-                {
-                    System.IO.File.Delete(filePath);
-                    ModelState.AddModelError("ImageFile", "The uploaded file is not a valid image.");
-                }
-            }
+            DeleteEntity("Image", song.Id);
+            await UploadImageAsync(song);
         }
 
         private async Task UpdateSongAsync(Song song)
         {
-            if (song.MusicFile != null)
-            {
-                string uniqueFileName =
-                    $"{song.Id}_{song.AlbumId}_{song.AuthorId}{Path.GetExtension(song.MusicFile.FileName)}";
-
-                string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", "songs", uniqueFileName);
-
-                // delete old image if it exists
-                if (System.IO.File.Exists(filePath)) // checks if the old image exists
-                {
-                    System.IO.File.Delete(filePath);
-                }
-
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await song.MusicFile.CopyToAsync(fileStream);
-                }
-
-                if (IsImage(filePath))
-                {
-                    song.MusicFileName = uniqueFileName;
-                }
-                else
-                {
-                    System.IO.File.Delete(filePath);
-                    ModelState.AddModelError("MusicFile", "Invalid file format. Please upload a valid mp3 file.");
-                }
-            }
+            DeleteEntity("Song", song.Id);
+            await UploadSongAsync(song);
         }
 
         private bool IsMp3(string filePath)

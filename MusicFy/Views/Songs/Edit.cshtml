@@ -32,7 +32,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ImageFile" class="control-label"></label>
-                <input asp-for="ImageFile" type="file" value="@Model.ImageFileName" class="form-control" id="fileInput" onchange="previewImage()" />
+                <input asp-for="ImageFile" type="file" value="@Model.ImageFileName" class="form-control" id="fileInput" onchange="previewImage()" accept="image/png, image/jpeg" />
                 <span asp-validation-for="ImageFile" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -40,16 +40,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="MusicFile" class="control-label"></label>
-                <input asp-for="MusicFile" type="file" value="@Model.MusicFileName" class="form-control" id="audio"/>
+                <input asp-for="MusicFile" type="file" value="@Model.MusicFileName" class="form-control" accept=".mp3" />
                 <span asp-validation-for="MusicFile" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <br/>
-
-                <audio id="previewAudio" controls>
-                    <source src="/uploads/songs/@Model.MusicFileName" type="audio/mp3" />
-                    Your browser does not support the audio element.
-                </audio>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

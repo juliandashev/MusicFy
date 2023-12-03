@@ -269,3 +269,6 @@ C:\Users\Intel\source\repos\MusicFy\MusicFy\bin\Debug\net7.0\NAudio.Core.dll
 C:\Users\Intel\source\repos\MusicFy\MusicFy\bin\Debug\net7.0\NAudio.Midi.dll
 C:\Users\Intel\source\repos\MusicFy\MusicFy\bin\Debug\net7.0\NAudio.Wasapi.dll
 C:\Users\Intel\source\repos\MusicFy\MusicFy\bin\Debug\net7.0\NAudio.WinMM.dll
+C:\Users\Intel\source\repos\MusicFy\MusicFy\bin\Debug\net7.0\JetBrains.Annotations.dll
+C:\Users\Intel\source\repos\MusicFy\MusicFy\bin\Debug\net7.0\X.PagedList.dll
+C:\Users\Intel\source\repos\MusicFy\MusicFy\bin\Debug\net7.0\X.PagedList.Mvc.Core.dll

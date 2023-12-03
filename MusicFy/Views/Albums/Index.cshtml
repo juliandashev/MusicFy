@@ -1,11 +1,39 @@
-﻿@model IEnumerable<MF.Data.Song.Album>
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@model IEnumerable<MF.Data.Song.Album>
 
 @{
     ViewData["Title"] = "Index";
+
+    var searchTitle = ViewBag.TitleSearch;
+    var searchAuthorId = ViewBag.AuthorIdSearch;
+
+    var queryTitleParams = new Dictionary<string, string>
+            {
+                { "sortOrder", ViewBag.TitleSortParam },
+                { "searchTitle", ViewBag.TitleSearch },
+                { "searchAuthorId", ViewBag.AuthorIdSearch }
+            };
 }
 
 <h1>Index</h1>
 
+<form asp-action="Index">
+    <div class="row">
+        <div class="col-md-2">
+            <input asp-for="@searchTitle" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <select asp-for="@searchAuthorId" class="form-control" asp-items="(IEnumerable<SelectListItem>)ViewBag.Authors">
+                <option value="">-Select Author-</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-warning"><i class="bi bi-search"></i> Search</button>
+        </div>
+    </div>
+    <div class="col-md-2" style="height: 20px;"></div>
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -22,25 +50,28 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author.Username)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.isPublic)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isPublic)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
 <button onclick="location.href='@Url.Action("Create", "Albums")';" class="btn btn-outline-warning">Create new</button>
+<br />
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page, searchTitle = ViewBag.TitleSearch, sortOrder = ViewBag.SortOrder }))

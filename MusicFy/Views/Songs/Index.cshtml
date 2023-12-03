@@ -1,11 +1,45 @@
-﻿@model IEnumerable<MF.Data.Song.Song>
+﻿﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@model IEnumerable<MF.Data.Song.Song>
 
 @{
     ViewData["Title"] = "Index";
+
+    var searchTitle = ViewBag.TitleSearch;
+    var searchAlbumId = ViewBag.AlbumIdSearch;
+
+    var queryTitleParams = new Dictionary<string, string>
+            {
+                { "sortOrder", ViewBag.TitleSortParam },
+                { "searchTitle", ViewBag.TitleSearch },
+                { "searchAlbumId", ViewBag.AlbumIdSearch }
+            };
+    var queryReleaseDateParams = new Dictionary<string, string>
+            {
+                { "sortOrder", ViewBag.ReleaseDateSortParam },
+                { "searchTitle", ViewBag.TitleSearch },
+                { "searchAlbumId", ViewBag.AlbumIdSearch }
+            };
 }
 
 <h1>Index</h1>
 
+<form asp-action="Index">
+    <div class="row">
+        <div class="col-md-2">
+            <input asp-for="@searchTitle" class="form-control" placeholder="Search Title"/>
+        </div>
+        <div class="col-md-2">
+            <select asp-for="@searchAlbumId" class="form-control" asp-items="(IEnumerable<SelectListItem>)ViewBag.Albums">
+                <option value="">-Select Album-</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-warning"><i class="bi bi-search"></i> Search</button>
+        </div>
+    </div>
+    <div class="col-md-2" style="height: 20px;"></div>
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -71,3 +105,5 @@
 </table>
 
 <button onclick="location.href='@Url.Action("Create", "Songs")';" class="btn btn-outline-warning">Create new</button>
+<br>
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page, searchTitle = ViewBag.TitleSearch, sortOrder = ViewBag.SortOrder }))

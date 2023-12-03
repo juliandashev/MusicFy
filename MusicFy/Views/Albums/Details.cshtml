@@ -32,12 +32,31 @@
             @Html.DisplayNameFor(model => model.Songs):
         </dt>
         <dd class="col-sm-10">
-            <ul>
-                @foreach (var song in ViewBag.SelectedSongs)
-                {
-                    <li>@song.Name</li>
-                }
-            </ul>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th><label asp-for="Songs" class="control-label">Songs:</label></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int i = 1;
+
+                        foreach (var item in ViewBag.SelectedSongs)
+                        {
+                            <tr>
+                                <td>@(i++)</td>
+                                <td>
+                                    <a href="/Songs/Details/@item.Id">
+                                        @item.Name
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
         </dd>
     </dl>
 </div>

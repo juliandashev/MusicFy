@@ -245,60 +245,28 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\1__1.jpg",
-      "PackagePath": "staticwebassets\\uploads\\banners\\1__1.jpg"
+      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\18_3_2.jpg",
+      "PackagePath": "staticwebassets\\uploads\\banners\\18_3_2.jpg"
     },
     {
-      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\2_1_1.png",
-      "PackagePath": "staticwebassets\\uploads\\banners\\2_1_1.png"
+      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\19_4_2.jpg",
+      "PackagePath": "staticwebassets\\uploads\\banners\\19_4_2.jpg"
     },
     {
-      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\3_2_1.jpg",
-      "PackagePath": "staticwebassets\\uploads\\banners\\3_2_1.jpg"
+      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\20_5_2.jpg",
+      "PackagePath": "staticwebassets\\uploads\\banners\\20_5_2.jpg"
     },
     {
-      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\4__1.jpg",
-      "PackagePath": "staticwebassets\\uploads\\banners\\4__1.jpg"
+      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\songs\\18_3_2.mp3",
+      "PackagePath": "staticwebassets\\uploads\\songs\\18_3_2.mp3"
     },
     {
-      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\5_1_1.png",
-      "PackagePath": "staticwebassets\\uploads\\banners\\5_1_1.png"
+      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\songs\\19_4_2.mp3",
+      "PackagePath": "staticwebassets\\uploads\\songs\\19_4_2.mp3"
     },
     {
-      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\6__1.jpg",
-      "PackagePath": "staticwebassets\\uploads\\banners\\6__1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\banners\\7_2_1.png",
-      "PackagePath": "staticwebassets\\uploads\\banners\\7_2_1.png"
-    },
-    {
-      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\songs\\1__1.mp3",
-      "PackagePath": "staticwebassets\\uploads\\songs\\1__1.mp3"
-    },
-    {
-      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\songs\\2_1_1.mp3",
-      "PackagePath": "staticwebassets\\uploads\\songs\\2_1_1.mp3"
-    },
-    {
-      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\songs\\3_2_1.mp3",
-      "PackagePath": "staticwebassets\\uploads\\songs\\3_2_1.mp3"
-    },
-    {
-      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\songs\\4__1.mp3",
-      "PackagePath": "staticwebassets\\uploads\\songs\\4__1.mp3"
-    },
-    {
-      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\songs\\5_1_1.mp3",
-      "PackagePath": "staticwebassets\\uploads\\songs\\5_1_1.mp3"
-    },
-    {
-      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\songs\\6__1.mp3",
-      "PackagePath": "staticwebassets\\uploads\\songs\\6__1.mp3"
-    },
-    {
-      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\songs\\7_2_1.mp3",
-      "PackagePath": "staticwebassets\\uploads\\songs\\7_2_1.mp3"
+      "Id": "C:\\Users\\Intel\\source\\repos\\MusicFy\\MusicFy\\wwwroot\\uploads\\songs\\20_5_2.mp3",
+      "PackagePath": "staticwebassets\\uploads\\songs\\20_5_2.mp3"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.MusicFy.Microsoft.AspNetCore.StaticWebAssets.props",

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using MF.Data.Song;
 using MusicFy.Data;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
+using X.PagedList;
 
 namespace MusicFy.Controllers
 {
@@ -21,14 +22,42 @@ namespace MusicFy.Controllers
         }
 
         // GET: Albums
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchTitle, int? searchAuthorId, string sortOrder, int? page)
         {
-            var musicFyDbContext = _context.Albums.Include(a => a.Author);
-            return View(await musicFyDbContext.ToListAsync());
+            int pageCurrent = page ?? 1; //page == null ? 1 : page
+            int pageMaxSize = 4;
+
+            var albums = _context.Albums.Include(a => a.Author).AsQueryable();
+
+            ViewBag.Authors = new SelectList(_context.Authors, "Id", "Username");
+
+            ViewBag.TitleSearch = searchTitle;
+            if (!string.IsNullOrEmpty(searchTitle))
+                albums = albums.Where(x => x.Name.Contains(searchTitle));
+
+            ViewBag.AlbumIdSearch = searchAuthorId.ToString();
+            if (searchAuthorId.HasValue)
+                albums = albums.Where(x => x.AuthorId == searchAuthorId);
+
+            ViewBag.SortOrder = sortOrder;
+            ViewBag.TitleSortParam = string.IsNullOrEmpty(sortOrder) ? "title-desc" : "";
+
+            switch (sortOrder)
+            {
+                case "title-desc":
+                    albums = albums.OrderByDescending(x => x.Name);
+                    break;
+                default:
+                    albums = albums.OrderBy(x => x.Name);
+                    break;
+
+            }
+
+            return View(await albums.ToPagedListAsync(pageCurrent, pageMaxSize));
         }
 
         // GET: Albums/Details/5
-        public async Task<IActionResult> Details(int? id, List<int> selectedSongIds)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Albums == null)
             {
@@ -44,7 +73,7 @@ namespace MusicFy.Controllers
                 return NotFound();
             }
 
-            ViewBag.SelectedSongs = album.Songs;
+            ViewBag.SelectedSongs = _context.Songs.Where(x => x.AlbumId == id);
 
             return View(album);
         }

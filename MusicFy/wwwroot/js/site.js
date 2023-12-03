@@ -16,27 +16,3 @@ function previewImage() {
         reader.readAsDataURL(input.files[0]);
     }
 }
-document.addEventListener('DOMContentLoaded', function () {
-    var songFileUpload = document.getElementById('audio');
-
-    if (songFileUpload) {
-        songFileUpload.addEventListener('change', handleSongFileUpload, false);
-    }
-});
-
-function handleSongFileUpload() {
-    var fInput = document.getElementById('audio');
-    var file = fInput.files[0];
-
-    if (file) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            var songFile = e.target.result;
-
-            // Your code to handle the song file goes here
-        };
-
-        reader.readAsArrayBuffer(file);
-    }
-}

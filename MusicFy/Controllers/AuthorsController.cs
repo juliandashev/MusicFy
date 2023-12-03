@@ -22,9 +22,9 @@ namespace MusicFy.Controllers
         // GET: Authors
         public async Task<IActionResult> Index()
         {
-              return _context.Authors != null ? 
-                          View(await _context.Authors.ToListAsync()) :
-                          Problem("Entity set 'MusicFyDbContext.Authors'  is null.");
+            return _context.Authors != null ?
+                        View(await _context.Authors.ToListAsync()) :
+                        Problem("Entity set 'MusicFyDbContext.Authors'  is null.");
         }
 
         // GET: Authors/Details/5
@@ -37,10 +37,13 @@ namespace MusicFy.Controllers
 
             var author = await _context.Authors
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (author == null)
             {
                 return NotFound();
             }
+
+            ViewBag.AuthorAlbums = _context.Albums.Where(x => x.AuthorId == author.Id);
 
             return View(author);
         }
@@ -150,14 +153,14 @@ namespace MusicFy.Controllers
             {
                 _context.Authors.Remove(author);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool AuthorExists(int id)
         {
-          return (_context.Authors?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Authors?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

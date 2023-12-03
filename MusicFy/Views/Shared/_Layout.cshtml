@@ -32,6 +32,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Albums" asp-action="Index">Album</a>
                         </li>
+                        <li>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Roles" asp-action="Index">Roles</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -50,7 +53,7 @@
                 <div class="col-md-2" style="text-align: right">2:11</div> <!--Current time on the song-->
 
                 <div class="col-md-6">
-                    <input type="range" min="0" max="100" step="1" value="50" name="timestamp" id="slider_timestamp"/>
+                    <input type="range" min="0" max="100" step="1" value="0" name="timestamp" id="slider_timestamp"/>
                 </div>
 
                 <div class="col-md-2" style="text-align: left"> 5:43</div> <!--Song duration-->
