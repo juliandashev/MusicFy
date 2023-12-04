@@ -79,11 +79,10 @@ namespace MusicFy.Controllers
         }
 
         // GET: Albums/Create
-        public IActionResult Create(Album album)
+        public IActionResult Create()
         {
             ViewData["AuthorId"] = new SelectList(_context.Set<Author>(), "Id", "Username");
             ViewData["AllSongs"] = new SelectList(_context.Songs, "Id", "Name");
-            ViewData["AddedSongs"] = new SelectList(_context.Songs.Where(x => x.AlbumId == album.Id), "Id", "Name", album.Songs);
 
             return View();
         }
@@ -93,7 +92,7 @@ namespace MusicFy.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AuthorId,Name,isPublic,Songs")] Album album, List<int> selectedSongIds)
+        public async Task<IActionResult> Create([Bind("Id,AuthorId,Name,isPublic,Songs,Pole")] Album album)
         {
             if (album.Author == null && album.AuthorId == null)
             {
@@ -102,13 +101,6 @@ namespace MusicFy.Controllers
 
             if (ModelState.IsValid)
             {
-                var songs = await _context.Songs.Where(s => selectedSongIds.Contains(s.Id)).ToListAsync();
-
-                foreach (var song in songs)
-                {
-                    album.Songs.Add(song);
-                }
-
                 _context.Add(album);
                 await _context.SaveChangesAsync();
 

@@ -10,3 +10,15 @@ C:\Users\Intel\source\repos\MusicFy\MF.Data\obj\Debug\net7.0\refint\MF.Data.dll
 C:\Users\Intel\source\repos\MusicFy\MF.Data\obj\Debug\net7.0\MF.Data.pdb
 C:\Users\Intel\source\repos\MusicFy\MF.Data\obj\Debug\net7.0\ref\MF.Data.dll
 C:\Users\Intel\source\repos\MusicFy\MF.Data\obj\Debug\net7.0\MF.Data.csproj.AssemblyReference.cache
+d:\users\fmi\Desktop\New folder\distributed-applications-cs\course-work\Implementations\MusicFy\MF.Data\bin\Debug\net7.0\MF.Data.deps.json
+d:\users\fmi\Desktop\New folder\distributed-applications-cs\course-work\Implementations\MusicFy\MF.Data\bin\Debug\net7.0\MF.Data.dll
+d:\users\fmi\Desktop\New folder\distributed-applications-cs\course-work\Implementations\MusicFy\MF.Data\bin\Debug\net7.0\MF.Data.pdb
+d:\users\fmi\Desktop\New folder\distributed-applications-cs\course-work\Implementations\MusicFy\MF.Data\obj\Debug\net7.0\MF.Data.csproj.AssemblyReference.cache
+d:\users\fmi\Desktop\New folder\distributed-applications-cs\course-work\Implementations\MusicFy\MF.Data\obj\Debug\net7.0\MF.Data.GeneratedMSBuildEditorConfig.editorconfig
+d:\users\fmi\Desktop\New folder\distributed-applications-cs\course-work\Implementations\MusicFy\MF.Data\obj\Debug\net7.0\MF.Data.AssemblyInfoInputs.cache
+d:\users\fmi\Desktop\New folder\distributed-applications-cs\course-work\Implementations\MusicFy\MF.Data\obj\Debug\net7.0\MF.Data.AssemblyInfo.cs
+d:\users\fmi\Desktop\New folder\distributed-applications-cs\course-work\Implementations\MusicFy\MF.Data\obj\Debug\net7.0\MF.Data.csproj.CoreCompileInputs.cache
+d:\users\fmi\Desktop\New folder\distributed-applications-cs\course-work\Implementations\MusicFy\MF.Data\obj\Debug\net7.0\MF.Data.dll
+d:\users\fmi\Desktop\New folder\distributed-applications-cs\course-work\Implementations\MusicFy\MF.Data\obj\Debug\net7.0\refint\MF.Data.dll
+d:\users\fmi\Desktop\New folder\distributed-applications-cs\course-work\Implementations\MusicFy\MF.Data\obj\Debug\net7.0\MF.Data.pdb
+d:\users\fmi\Desktop\New folder\distributed-applications-cs\course-work\Implementations\MusicFy\MF.Data\obj\Debug\net7.0\ref\MF.Data.dll

@@ -32,5 +32,8 @@ namespace MF.Data.Song
         [Display(Name = "Make Public")]
         [Required]
         public bool isPublic { get; set; }
+
+        [Display(Name = "Pole")]
+        public string? Pole { get; set; }
     }
 }

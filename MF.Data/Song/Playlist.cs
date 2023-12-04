@@ -15,6 +15,8 @@ namespace MF.Data.Song
 
         public int AuthorId { get; set; }
 
+        [Display(Name = "Author")]
+        [Required]
         public Author Author { get; set; }
 
         [Display(Name = "Playlist name")]
@@ -28,7 +30,7 @@ namespace MF.Data.Song
 
         // Can be nullable, becase a playlist can be empty
         [Display(Name = "Playlist's songs")]
-        public virtual ICollection<Song>? Songs { get; set; }
+        public virtual List<Song>? Songs { get; set; }
 
         [Display(Name = "Playlist status")]
         [Required]

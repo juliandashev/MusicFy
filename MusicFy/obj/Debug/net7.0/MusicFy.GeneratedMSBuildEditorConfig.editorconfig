@@ -9,113 +9,133 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MusicFy
 build_property.RootNamespace = MusicFy
-build_property.ProjectDir = C:\Users\Intel\source\repos\MusicFy\MusicFy\
+build_property.ProjectDir = d:\users\fmi\Desktop\New folder\distributed-applications-cs\course-work\Implementations\MusicFy\MusicFy\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Intel\source\repos\MusicFy\MusicFy
+build_property.MSBuildProjectDirectory = d:\users\fmi\Desktop\New folder\distributed-applications-cs\course-work\Implementations\MusicFy\MusicFy
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Albums/Create.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Albums/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1zXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Albums/Delete.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Albums/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1zXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Albums/Details.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Albums/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1zXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Albums/Edit.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Albums/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1zXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Albums/Index.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Albums/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Authors/Create.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Authors/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Authors/Delete.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Authors/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Authors/Details.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Authors/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Authors/Edit.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Authors/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Authors/Index.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Authors/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Home/Index.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Home/Privacy.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Roles/Create.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Playlists/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheWxpc3RzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Playlists/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheWxpc3RzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Playlists/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheWxpc3RzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Playlists/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheWxpc3RzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Playlists/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheWxpc3RzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Roles/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Roles/Index.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Roles/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Roles/ManageRoleToUser.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Roles/ManageRoleToUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcTWFuYWdlUm9sZVRvVXNlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Shared/Error.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Shared/_LoginPartial.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Shared/_ValidationScriptsPartial.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Songs/Create.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Songs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29uZ3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Songs/Delete.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Songs/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29uZ3NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Songs/Details.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Songs/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29uZ3NcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Songs/Edit.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Songs/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29uZ3NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Songs/Index.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Songs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29uZ3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/_ViewImports.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/_ViewStart.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Intel/source/repos/MusicFy/MusicFy/Views/Shared/_Layout.cshtml]
+[d:/users/fmi/Desktop/New folder/distributed-applications-cs/course-work/Implementations/MusicFy/MusicFy/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-yhcxc25hpz

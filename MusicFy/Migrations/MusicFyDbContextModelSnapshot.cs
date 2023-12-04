@@ -38,6 +38,9 @@ namespace MusicFy.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("Pole")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("isPublic")
                         .HasColumnType("bit");
 
@@ -103,6 +106,10 @@ namespace MusicFy.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Pole")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
